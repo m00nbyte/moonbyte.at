@@ -1,0 +1,75 @@
+==================================================================
+https://keybase.io/m00nbyte
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://moonbyte.at
+  * I am m00nbyte (https://keybase.io/m00nbyte) on keybase.
+  * I have a public key with fingerprint 4DF4 F193 5CE7 D654 17EB  C5A2 8E10 841A 7613 F659
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120aec2f4188b3f32a8005dd7e422f6bdcf92e579314420e89e65aa9f69159fc66b0a",
+      "fingerprint": "4df4f1935ce7d65417ebc5a28e10841a7613f659",
+      "host": "keybase.io",
+      "key_id": "8e10841a7613f659",
+      "kid": "0101685b419a1fa8edac0fe896f4964a6f6a10e7f3898a150609a199d67b9a068c050a",
+      "uid": "4388bbcd936e184895625e5fed852219",
+      "username": "m00nbyte"
+    },
+    "service": {
+      "hostname": "moonbyte.at",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1596905580,
+  "expire_in": 157680000,
+  "prev": "c8cdacae88e07f7651e53f1be128b09bc56baa42c993cce414b0f90ca3baa917",
+  "seqno": 14,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.13
+Comment: https://keybase.io/crypto
+
+yMNtAnicbVJtUFRVGF4UrMUYMd2RGEi8CjMJbed+37sticqIKTPQtoMQizv349zl
+Buxdd5cFIsrKP+kUkaMQEIH7C2VsoBwIP/nQiQiFYULCNBANiLEEiyk+orNM/OvX
+mfOe53ne53nf0x22Vhca9HH4sUjfprmsoN6OykKd3TicX4qJmlyCmUqxPLhywHwZ
+erz2PFXGTBjACSBAiVAonONEUiEJgQOAlmUWUgShMKIsKTwBaZYncYoiAOR4yNCC
+wCsMj9O8IjGMCAQsAVNUpwO6XW7V6UWylKxQCs6TtARZmaEpnIWiRAsEB3HAUbjA
+MjipMDSPiLmaJ8BA5kTBA42qhmroYl+x9z/4Vd8AZzhapHBewBWBg7IgAQW5YxSK
+ZyiBURgBB5BVSI7nBJwGDEBAnpcZVuQFwHASoFd8F67IUSRKL0oyTzIQ5yiOpxmC
+hrQCZY4mCDzQt9AD3U6hACJ0AQBOscQLsbIEDFV9qgQDgw0kWUVo2grCKHgR1eXW
+vJqk5aOHXK/X5TEFiN4SVwBZBEX7fxp2UXXKaIyI4YNuj6o5MROOkJJXDYiicTM8
+oGkOJGCw2KW6oV0NIGiWQSsDINAH+pCkxEloGgLkOAhYhWVoHNKkgosQJzgR8GgR
+jCgIFCHxPClJkMIpESg8kAQSlXmcxQKpjjg1pE0hn4IDaXpUh1PwFrpR5s4OW7Au
+KFS3LmRN4H/pQvXhq78urG3DP7HHsnMce9+rm/7RmKKz1BvMuz4ryY5YPr1xatv8
+pezoAYDbDIaCg2e/e/V44plDC0uJIz+MTja26StK26u/aR65+pxoSKmsjay5+fgw
+mxcV8frUqPl6V3JHteVpa8UbYMQ2211XptU5D7AnzZyxuDMlbW1HSI635+LRxmJj
+3+9FCeYDpr+rRvbfcvyW2uQHpkcpzU/dXOhzzi+Vh2XdG9CGk9OfODtvRIc8Lp+4
+Qw7bhjsGg5czH351pmF6KmJP8GB04cy1fW3GDX+e6Br1vPx5jH0uY5Io3xOkX7I8
+Gj8fbxMXrW/N5GZuKoJxjsQ4X5xl5v2hNyviPyn4qThh77fTPbfefnH7lx9cjmjL
+XohPMoxcfaHsFevlxfax73t1VS336609m/cfbs0f+2KI35J6d9t5Mmzi/qUr+rn+
+mPU7k1oaBozp+yw/299JZrcG1Rf3Lvo/rSKurWMzW/FfgLV1PHbyhpw2O/bE/3xz
+um/HeJT/wddm9Y/yoZ3E5vTd9bU8iF+f2n87075r1Lf9SFp35IROMkQ/WAy/cCpu
+8GjS8pW75I64j5r6Mk6e9Z+490zWh+wdV3VD3+TYs1Evkb/e7td1/bWxRThtrorZ
+Oth+zjLhysmzvVvTdKj+4e7emosXjps2VOraXivPmIhITk6yrjnYzzTGLoB5cL3W
+oJ895x/bcko/0/Avkp+/DA==
+=AIIf
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/m00nbyte
+
+==================================================================
