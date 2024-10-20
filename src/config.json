@@ -1,0 +1,258 @@
+{
+    "consent": {
+        "default": "en",
+        "translations": {
+            "en": {
+                "consentModal": {
+                    "title": "🍪 Want some cookies?",
+                    "description": "This website uses cookies to enhance your experience and analyze our traffic. Cookies are small text files stored on your device that help us remember your preferences, improve site functionality, and provide you with personalized content.\n\n<button type=\"button\" class=\"!text-stone-300 !underline !mt-2 hover:!text-stone-100 !transition-all\" onclick=\"CookieConsent.showPreferences();\">Manage preferences</button>",
+                    "acceptAllBtn": "Accept all",
+                    "acceptNecessaryBtn": "Reject all",
+                    "showPreferencesBtn": ""
+                },
+                "preferencesModal": {
+                    "title": "🍪 Consent Preferences",
+                    "acceptAllBtn": "Accept all",
+                    "acceptNecessaryBtn": "Reject all",
+                    "savePreferencesBtn": "Save preferences",
+                    "closeIconLabel": "Close modal",
+                    "serviceCounterLabel": "Service|Services",
+                    "sections": [
+                        {
+                            "title": "Cookie Usage",
+                            "description": "This website uses cookies to ensure basic functionality and to improve your online experience. You can accept or reject statistical cookies at any time. For more details on cookies and other sensitive data, see the full privacy statement."
+                        },
+                        {
+                            "title": "Essential Cookies <span class=\"pm__badge\">Always Enabled</span>",
+                            "description": "Essential for core website functions like security, navigation, and accessing secure areas. Without these, the site won't work properly.",
+                            "linkedCategory": "necessary"
+                        },
+                        {
+                            "title": "Functional Cookies",
+                            "description": "These cookies remember your preferences (like language) and enhance the website's functionality, making your experience more personalized and convenient.",
+                            "linkedCategory": "functionality"
+                        },
+                        {
+                            "title": "Analytical Cookies",
+                            "description": "Used to collect anonymous data on how visitors use the site. This helps improve performance and user experience by tracking trends and issues.",
+                            "linkedCategory": "analytics"
+                        },
+                        {
+                            "title": "Marketing Cookies",
+                            "description": "These cookies track your online activity to display relevant ads and measure the effectiveness of marketing campaigns. They help ensure ads are tailored to your interests.",
+                            "linkedCategory": "marketing"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "stars": {
+        "container": ".scrolling_stars",
+        "direction": "down",
+        "speed": 250,
+        "stars": {
+            "small": { "count": 100, "blinkDuration": 2 },
+            "medium": { "count": 50, "blinkDuration": 2 },
+            "large": { "count": 50, "blinkDuration": 2 }
+        }
+    },
+    "stack": [
+        { "class": "icon-[devicon--html5]", "title": "HTML5" },
+        { "class": "icon-[devicon--css3]", "title": "CSS3" },
+        { "class": "icon-[devicon--javascript]", "title": "JavaScript" },
+        { "class": "icon-[devicon--typescript]", "title": "TypeScript" },
+        { "class": "icon-[devicon--nextjs]", "title": "NextJS" },
+        { "class": "icon-[devicon--tailwindcss]", "title": "TailwindCSS" },
+        { "class": "icon-[devicon--rollup]", "title": "RollupJS" },
+        { "class": "icon-[devicon--mongodb]", "title": "MongoDB" },
+        { "class": "icon-[devicon--redis]", "title": "Redis" }
+    ],
+    "repos": [
+        {
+            "name": "classmix",
+            "npm": true
+        },
+        {
+            "name": "data-extractor",
+            "npm": true
+        },
+        {
+            "name": "currency-converter",
+            "npm": true
+        },
+        {
+            "name": "rollup-plugin-strip-prop-types",
+            "npm": true
+        },
+        {
+            "name": "pretty-url",
+            "npm": false,
+            "link": {
+                "url": "https://prettyurl.dev/",
+                "title": "Visit Website"
+            }
+        },
+        {
+            "name": "clear_all_browsing_data",
+            "npm": false,
+            "link": {
+                "url": "https://chromewebstore.google.com/detail/clear-all-browsing-data/nbdjkggggdkmlnajfhidfgfgodlmedia",
+                "title": "Open Chrome Web Store"
+            }
+        }
+    ],
+    "clients": [
+        {
+            "title": "Breeder",
+            "url": "https://breeder.at/",
+            "img": {
+                "src": "/img/clients/breeder.webp",
+                "width": "59.73",
+                "height": "56"
+            },
+            "classes": "h-14"
+        },
+        {
+            "title": "Storeroom",
+            "url": "https://storeroom.at/",
+            "img": {
+                "src": "/img/clients/storeroom.webp",
+                "width": "64",
+                "height": "64"
+            },
+            "classes": "h-16"
+        },
+        {
+            "title": "Kibox",
+            "url": "https://kibox.at/",
+            "img": {
+                "src": "/img/clients/kibox.webp",
+                "width": "100",
+                "height": "40"
+            },
+            "classes": "h-10"
+        },
+        {
+            "title": "PolypFarm",
+            "url": "https://polyp.farm/",
+            "img": {
+                "src": "/img/clients/polyp_farm.webp",
+                "width": "117.64",
+                "height": "40"
+            },
+            "classes": "h-10"
+        },
+        {
+            "title": "Farmer Panorama",
+            "url": "https://farmerpanorama.com/",
+            "img": {
+                "src": "/img/clients/farmer_panorama.webp",
+                "width": "56",
+                "height": "56"
+            },
+            "classes": "h-14"
+        },
+        {
+            "title": "Elke Altenberger",
+            "url": "https://altenbergerinteriordesign.at/",
+            "img": {
+                "src": "/img/clients/elke_altenberger.webp",
+                "width": "56",
+                "height": "56"
+            },
+            "classes": "h-14"
+        },
+        {
+            "title": "AMZ",
+            "url": "https://amz.at/",
+            "img": {
+                "src": "/img/clients/amz.webp",
+                "width": "45.44",
+                "height": "48"
+            },
+            "classes": "h-12 px-2 invert"
+        },
+        {
+            "title": "Nicolodi Consulting",
+            "url": "https://nicolodi-consulting.com/",
+            "img": {
+                "src": "/img/clients/nicolodi_consulting.webp",
+                "width": "49.33",
+                "height": "40"
+            },
+            "classes": "h-10"
+        },
+        {
+            "title": "Body Concept",
+            "url": "https://bodyconceptvienna.at/",
+            "img": {
+                "src": "/img/clients/body_concept.webp",
+                "width": "66.83",
+                "height": "56"
+            },
+            "classes": "h-14 invert saturate-200"
+        },
+        {
+            "title": "Turys",
+            "url": "https://turys.at/",
+            "img": {
+                "src": "/img/clients/turys.webp",
+                "width": "",
+                "height": ""
+            },
+            "classes": "h-14"
+        },
+        {
+            "title": "Tapkey",
+            "url": "https://tapkey.com/",
+            "img": {
+                "src": "/img/clients/tapkey.webp",
+                "width": "96.96",
+                "height": "32"
+            },
+            "classes": "h-8"
+        },
+        {
+            "title": "Einzigartig Architektur",
+            "url": "https://ea-arch.at/",
+            "img": {
+                "src": "/img/clients/einzigartig_architektur.webp",
+                "width": "100",
+                "height": "32"
+            },
+            "classes": "h-8 invert"
+        },
+        {
+            "title": "Bluesky Immunotherapies",
+            "url": "https://blueskyvaccines.com/",
+            "img": {
+                "src": "/img/clients/bluesky_immunotherapies.webp",
+                "width": "213.33",
+                "height": "32"
+            },
+            "classes": "h-8 invert"
+        }
+    ],
+    "form": {
+        "required": "Field is required",
+        "minLength": "Enter more characters",
+        "maxLength": "Max. ? characters",
+        "messageLimit": "Message limit reached",
+        "invalidChars": "Invalid characters",
+        "invalidEmail": "Invalid email address",
+        "checkbox": "You must check the box",
+        "response": {
+            "0": {
+                "title": "Oh snap!",
+                "message": "There was an error. Please try again later.",
+                "color": "bg-rose-600"
+            },
+            "1": {
+                "title": "Thank you!",
+                "message": "Your message was delivered.",
+                "color": "bg-emerald-600"
+            }
+        }
+    }
+}

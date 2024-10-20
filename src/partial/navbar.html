@@ -1,0 +1,48 @@
+<div
+    id="navbar"
+    class="sticky top-0 z-30 flex items-center justify-between w-full p-4 transition-colors bg-opacity-0 md:px-8 bg-sky-950"
+>
+    <div>
+        <a
+            id="logo_button"
+            class="flex items-center text-2xl font-bold cursor-pointer md:text-3xl hover:text-stone-300 ga-lb"
+            href="#landing"
+        >
+            <span
+                id="logo_text"
+                class="tracking-wider transition-all duration-300 ease-out opacity-100 pointer-events-none font-display"
+            >
+                moonbyte
+            </span>
+            <span
+                id="logo_scroll"
+                class="absolute flex items-center gap-2 -ml-2 transition-all duration-300 ease-out -translate-x-3 opacity-0 pointer-events-none z-negative"
+            >
+                <span class="icon-[gg--border-top]"></span>
+                <span class="text-lg tracking-tight font-body">back to top</span>
+            </span>
+        </a>
+    </div>
+
+    <div id="nav_links" class="flex-row hidden gap-8 md:flex">
+        <a href="#about" class="custom-underline ga-mb">about</a>
+        <a href="#services" class="custom-underline ga-mb">services</a>
+        <a href="#showcase" class="custom-underline ga-mb">showcase</a>
+        <a href="#contact" class="custom-underline ga-mb">contact</a>
+    </div>
+
+    <button id="nav_toggle" class="z-20 mt-1 cursor-pointer md:hidden">
+        <div class="c-hamburger c-hamburger--dive">
+            <div class="c-hamburger-inner">
+                <span class="c-hamburger-bar"></span>
+                <span class="c-hamburger-bar"></span>
+                <span class="c-hamburger-bar"></span>
+            </div>
+        </div>
+        <span class="sr-only">menu</span>
+    </button>
+
+    <div id="nav_alt" class="flex-row hidden gap-8">
+        <a href="/" class="transition-all custom-underline ga-bb">home</a>
+    </div>
+</div>
