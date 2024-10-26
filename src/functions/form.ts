@@ -1,7 +1,7 @@
 import { FormResponse, FormText } from '@root/types';
 
 // #region textarea
-const minHeight = 200;
+const minHeight = 208;
 let staticOffset = 0;
 let lastMousePos = 0;
 
@@ -48,7 +48,7 @@ const performDrag = (container: HTMLTextAreaElement, event: MouseEvent): boolean
 
     lastMousePos = newMousePos;
     newMousePos = Math.max(minHeight, newMousePos);
-    container.style.height = `${newMousePos}px`; // Update the textarea height
+    container.style.height = `${newMousePos}px`;
 
     return newMousePos < minHeight && endDrag(container);
 };
@@ -80,7 +80,6 @@ const initializeTextarea = (): void => {
     const textareaContainer = document.querySelector<HTMLTextAreaElement>('#message_box');
     const textareaElement = document.querySelector<HTMLTextAreaElement>('#message_input');
     const textareaGrab = document.querySelector<HTMLDivElement>('#message_grab');
-
     if (!textareaContainer || !textareaElement || !textareaGrab) return;
 
     textareaContainer.style.height = `${minHeight}px`;
@@ -146,8 +145,13 @@ const validators: { [key: string]: Function } = {
  * @returns {void} This function has no output.
  */
 const removeErrorElement = (field: HTMLInputElement | HTMLTextAreaElement): void => {
-    const errorDiv = field.parentElement?.querySelector<HTMLDivElement>('.input_error');
-    errorDiv?.remove();
+    const parentElement = field.parentElement;
+    if (!parentElement) return;
+
+    const errorDiv = parentElement.querySelector<HTMLDivElement>('.input_error');
+    if (!errorDiv) return;
+
+    errorDiv.remove();
 };
 
 /**
@@ -159,6 +163,7 @@ const removeErrorElement = (field: HTMLInputElement | HTMLTextAreaElement): void
  */
 const createErrorElement = (field: HTMLInputElement | HTMLTextAreaElement, error: string): void => {
     const parentElement = field.parentElement;
+    if (!parentElement) return;
 
     removeErrorElement(field);
 
@@ -166,12 +171,9 @@ const createErrorElement = (field: HTMLInputElement | HTMLTextAreaElement, error
 
     const updateError = document.createElement('div');
     updateError.className = `input_error absolute flex flex-row items-center justify-center h-6 gap-2 pl-2 pr-2 text-xs shadow-xs bg-rose-800 ${divPosition}`;
-    updateError.innerHTML = `
-        <span>${error}</span>
-        <div class="icon-[fa--exclamation-circle]"></div>
-    `;
+    updateError.innerHTML = `<span>${error}</span><div class="icon-[fa--exclamation-circle]"></div>`;
 
-    parentElement?.appendChild(updateError);
+    parentElement.appendChild(updateError);
 };
 
 /**
@@ -202,10 +204,7 @@ const createFormResponse = (
     const formResponse = document.createElement('div');
     formResponse.id = 'form_response';
     formResponse.className = `absolute flex-row flex items-center w-full gap-3 top-0 px-3 py-2.5 shadow-xs cursor-default ${color}`;
-    formResponse.innerHTML = `
-        <span class="text-lg font-bold tracking-tight">${title}</span>
-        <span class="text-base">${message}</span>
-    `;
+    formResponse.innerHTML = `<span class="text-lg font-bold tracking-tight">${title}</span><span class="text-base">${message}</span>`;
 
     const formSubmit = document.querySelector<HTMLDivElement>('#form_submit');
     if (!formSubmit) return;
@@ -222,6 +221,7 @@ const createFormResponse = (
 };
 // #endregion
 
+// #region init
 /**
  * Initializes the contact form by setting up validation for its fields and handling
  * the submission process. It adds event listeners to validate fields on input or change
@@ -291,5 +291,6 @@ const initializeForm = (strings: FormText): void => {
         }
     });
 };
+// #endregion
 
 export { initializeForm };

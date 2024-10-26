@@ -51,13 +51,13 @@ const loadHTMLFiles = (filePaths) => {
     return htmlContent;
 };
 
-const createHtmlPlugin = ({ entry, output }) =>
+const processHtmlFile = ({ entry, output }) =>
     html({
         template: async () => {
-            const filePaths = ['src/partial/layout.html', 'src/partial/navbar.html', 'src/partial/footer.html', entry];
+            const filePaths = ['src/layout/index.html', 'src/layout/navbar.html', 'src/layout/footer.html', entry];
 
             const htmlContent = loadHTMLFiles(filePaths);
-            const { layout, navbar, footer } = htmlContent;
+            const { index: layout, navbar, footer } = htmlContent;
             const content = htmlContent[path.basename(entry, path.extname(entry))];
 
             return await minify(
@@ -95,10 +95,10 @@ const mainPlugins = [
 
 const htmlPlugins = [
     ...[
-        { entry: 'src/pages/index.html', output: 'index.html' },
+        { entry: 'src/pages/main.html', output: 'index.html' },
         { entry: 'src/pages/disclaimer.html', output: 'disclaimer.html' },
         { entry: 'src/pages/privacy.html', output: 'privacy.html' }
-    ].map(createHtmlPlugin),
+    ].map(processHtmlFile),
     copy({
         targets: [
             {

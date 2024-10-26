@@ -17,10 +17,12 @@ const animateStars = (config: StarsConfig, scrollingStarsContainer: HTMLDivEleme
     /**
      * Animates the star containers by updating their vertical position based on the configured direction and speed.
      * This function is called recursively using requestAnimationFrame to create a smooth animation effect.
+     *
+     * @param {NodeListOf<HTMLDivElement>} containers - The containers to animate.
+     * @returns {void} This function has no output.
      */
-    const animate = () => {
+    const animate = (containers: NodeListOf<HTMLDivElement>): void => {
         const speedPerFrame = speed / (60 * 100);
-
         const movement = direction === 'up' ? -speedPerFrame : speedPerFrame;
 
         const boundaries = {
@@ -28,21 +30,20 @@ const animateStars = (config: StarsConfig, scrollingStarsContainer: HTMLDivEleme
             max: 100
         };
 
-        starsContainers.forEach((star) => {
+        containers.forEach((star) => {
             let pos = parseFloat(star.style.top) + movement;
 
             pos = direction === 'up' && pos <= boundaries.min ? boundaries.max : pos >= boundaries.max ? boundaries.min : pos;
-
             star.style.top = `${pos}%`;
         });
 
-        requestAnimationFrame(animate);
+        requestAnimationFrame(() => animate(containers));
     };
 
     const initialPositions = direction === 'up' ? [0, 100] : [100, 0];
     starsContainers.forEach((star, index) => (star.style.top = `${initialPositions[index]}%`));
 
-    animate();
+    animate(starsContainers);
 };
 
 /**
@@ -66,7 +67,7 @@ const deepMergeConfig = <StarsConfig>(target: StarsConfig, source: Partial<Stars
         }
     }
 
-    return target; // Return the merged target configuration
+    return target;
 };
 
 /**
@@ -112,10 +113,13 @@ const initializeStars = (options: Partial<StarsConfig>): void => {
             Array.from({ length: count }).forEach(() => {
                 const star = document.createElement('div');
                 star.className = `stars ${size}`;
-                star.style.animation = `blink ${blinkDuration}s infinite`;
-                star.style.top = `${Math.random() * 100}vh`;
-                star.style.left = `${Math.random() * 100}vw`;
-                star.style.animationDelay = `${Math.random() * 2}s`;
+
+                Object.assign(star.style, {
+                    animation: `blink ${blinkDuration}s infinite`,
+                    top: `${Math.random() * 100}vh`,
+                    left: `${Math.random() * 100}vw`,
+                    animationDelay: `${Math.random() * 2}s`
+                });
 
                 starContainer.appendChild(star);
             });

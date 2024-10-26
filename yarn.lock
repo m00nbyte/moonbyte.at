@@ -6013,11 +6013,6 @@ svgo@^3.3.2:
     csso "^5.0.5"
     picocolors "^1.0.0"
 
-tailwindcss-delicious-hamburgers@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/tailwindcss-delicious-hamburgers/-/tailwindcss-delicious-hamburgers-1.0.3.tgz#715069fa2b40118975ffefc03ef09c4daa268028"
-  integrity sha512-Z7FRFGlVjmpYTMTcjUTXCFMiG/yMwN0Z23CoPLXY7u4CcdnAV0fBR/phS6tlXnMpg5737e0ZeODZF4u8eQtJcQ==
-
 tailwindcss@^3.4.10:
   version "3.4.10"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.4.10.tgz#70442d9aeb78758d1f911af29af8255ecdb8ffef"

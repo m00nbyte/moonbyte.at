@@ -1,6 +1,6 @@
 {
     "name": "@m00nbyte/moonbyte.at",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Blazing fast static website built with TypeScript, TailwindCSS, and Rollup.",
     "author": "m00nbyte <office@moonbyte.at>",
     "keywords": [
@@ -89,7 +89,6 @@
         "rollup-plugin-watch": "^1.0.4",
         "rollup-plugin-workbox": "^8.1.0",
         "tailwindcss": "^3.4.10",
-        "tailwindcss-delicious-hamburgers": "^1.0.3",
         "typescript": "^5.4.5"
     }
 }

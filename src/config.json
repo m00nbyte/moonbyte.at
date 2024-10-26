@@ -68,6 +68,38 @@
         { "class": "icon-[devicon--mongodb]", "title": "MongoDB" },
         { "class": "icon-[devicon--redis]", "title": "Redis" }
     ],
+    "services": [
+        {
+            "icon": "icon-[streamline--desktop-code]",
+            "title": "Web Development",
+            "description": "With me you get design and programming from a single source, and I accompany you in all phases of your project."
+        },
+        {
+            "icon": "icon-[uil--rocket]",
+            "title": "Business Websites",
+            "description": "I create an attractive website for your company using modern technologies such as NodeJS and React."
+        },
+        {
+            "icon": "icon-[ri--shopping-cart-line]",
+            "title": "Ecommerce",
+            "description": "With Wordpress and WooCommerce I can offer you high-quality online shops with tailored design solutions and ease of use."
+        },
+        {
+            "icon": "icon-[tdesign--data-checked]",
+            "title": "Technical SEO",
+            "description": "Having a fast and secure website and using modern web standards is very important these days. I can optimize your source code and server settings."
+        },
+        {
+            "icon": "icon-[ic--baseline-security]",
+            "title": "Security",
+            "description": "Every website should be protected from attacks. If you want to have your website professionally secured, I am exactly the right person for you."
+        },
+        {
+            "icon": "icon-[material-symbols--contact-support-rounded]",
+            "title": "Support",
+            "description": "Do you already have a website, but you sometimes have a question or two? I will be happy to help you with your request."
+        }
+    ],
     "repos": [
         {
             "name": "classmix",

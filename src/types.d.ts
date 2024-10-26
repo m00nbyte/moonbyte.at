@@ -10,6 +10,7 @@ interface MainConfig {
     consent: ConsentText;
     stars: StarsConfig;
     stack: TechStackList;
+    services: ServiceList;
     repos: RepoList;
     clients: ClientList;
     form: FormText;
@@ -115,6 +116,16 @@ export interface TechStackObject {
 }
 
 export type TechStackList = TechStackObject[];
+// #endregion
+
+// #region services
+export interface ServiceObject {
+    icon: string;
+    title: string;
+    description: string;
+}
+
+export type ServiceList = ServiceObject[];
 // #endregion
 
 // #region repos

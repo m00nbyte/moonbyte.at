@@ -13,8 +13,8 @@ let scrollTimeout: number | null = null;
  * @returns {void} This function has no output.
  */
 const toggleClasses = (element: HTMLElement, condition: boolean, { on, off }: { on: string[]; off: string[] }): void => {
-    element?.classList.remove(...(condition ? off : on));
-    element?.classList.add(...(condition ? on : off));
+    element.classList.remove(...(condition ? off : on));
+    element.classList.add(...(condition ? on : off));
 };
 
 /**
@@ -92,10 +92,7 @@ const updateStickyNavbar = (navBar: HTMLDivElement): void => {
     toggleMap.forEach(({ element, condition, classes }) => toggleClasses(element, condition, classes));
 
     lastScrollY = currentScrollY;
-
-    scrollTimeout = window.setTimeout(() => {
-        toggleUnderline('none');
-    }, 800);
+    scrollTimeout = window.setTimeout(() => toggleUnderline('none'), 800);
 };
 
 /**
@@ -109,24 +106,28 @@ const observeSections = (sections: NodeListOf<HTMLElement>): void => {
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
-                const sectionId = entry.target.id;
                 const navbarLinks = Array.from(document.querySelectorAll('#navbar a'));
 
                 toggleUnderline(scrollDirection);
 
                 const [activeLink] = navbarLinks.splice(
-                    navbarLinks.findIndex((item) => item.getAttribute('href') === `#${sectionId}`),
+                    navbarLinks.findIndex((item) => item.getAttribute('href') === `#${entry.target.id}`),
                     1
                 );
 
                 if (activeLink) {
+                    let removeClasses = ['underline-up', 'underline-down', 'underline-none'];
+                    let addClasses = [];
+
                     if (entry.isIntersecting) {
-                        activeLink.classList.remove('underline-up', 'underline-down', 'underline-none');
-                        activeLink.classList.add(`underline-${scrollDirection}`, 'nav-active');
+                        addClasses.push(`underline-${scrollDirection}`, 'nav-active');
                     } else {
-                        activeLink.classList.remove('underline-up', 'underline-down', 'underline-none', 'nav-active');
-                        activeLink.classList.add('underline-none');
+                        removeClasses.push('nav-active');
+                        addClasses.push('underline-none');
                     }
+
+                    activeLink.classList.remove(...removeClasses);
+                    activeLink.classList.add(...addClasses);
                 }
             });
         },
@@ -179,13 +180,12 @@ const handleNavLinkClick = (navLinks: NodeListOf<HTMLLinkElement>, navToggle: HT
  * @returns {void} This function has no output.
  */
 const handleScreenSize = (navLinks: HTMLDivElement): void => {
-    if (window.innerWidth < 768) {
-        navLinks.className = mobileNavActive
-            ? 'absolute top-0 left-0 flex flex-col items-center justify-center w-screen h-screen gap-16 text-3xl bg-stone-900'
-            : 'hidden';
-    } else {
-        navLinks.className = 'flex-row hidden gap-8 md:flex';
-    }
+    navLinks.className =
+        window.innerWidth < 768
+            ? mobileNavActive
+                ? 'absolute top-0 left-0 flex flex-col items-center justify-center w-screen h-screen gap-16 text-3xl bg-stone-900'
+                : 'hidden'
+            : 'flex-row hidden gap-8 md:flex';
 };
 
 /**
@@ -216,13 +216,14 @@ const initializeNavbar = (): void => {
         const navLinks = document.querySelectorAll('#navbar a') as NodeListOf<HTMLLinkElement>;
         navLinks.forEach((link) => link.addEventListener('click', (event) => handleNavLinkClick(navLinks, navToggle, event)));
 
-        const hamburger = navToggle.querySelector<HTMLDivElement>('.c-hamburger');
-        if (!hamburger) return;
+        const burgerMenu = document.querySelector<HTMLDivElement>('#burger-menu');
+        if (!burgerMenu) return;
 
         navToggle.addEventListener('click', () => {
             mobileNavActive = !mobileNavActive;
+            burgerMenu.classList.toggle('close');
+
             document.body.style.overflow = mobileNavActive ? 'hidden' : '';
-            hamburger.classList.toggle('active');
             navRight.className = mobileNavActive
                 ? 'absolute top-0 left-0 flex flex-col items-center justify-center w-screen h-screen gap-16 text-3xl bg-stone-900'
                 : 'hidden';

@@ -5,12 +5,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1" />
         <meta
             http-equiv="Content-Security-Policy"
-            content="default-src 'self'; worker-src 'self'; script-src-elem 'self' cdn.jsdelivr.net www.googletagmanager.com 'sha256-jFyARtFYsXxYNM1pDrUEhgLqPWmiZj++UOecr5OAAzU='; style-src-elem 'self' cdn.jsdelivr.net fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: www.googletagmanager.com; connect-src *.google-analytics.com"
+            content="default-src 'none'; worker-src 'self'; manifest-src 'self'; base-uri 'none'; script-src-elem 'self' cdn.jsdelivr.net www.googletagmanager.com 'sha256-jFyARtFYsXxYNM1pDrUEhgLqPWmiZj++UOecr5OAAzU='; style-src-elem 'self' cdn.jsdelivr.net fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: www.googletagmanager.com; connect-src *.google-analytics.com"
         />
         <title>moonbyte • beyond the limits</title>
+        <meta
+            name="description"
+            content="I am a senior web developer, network administrator and IT security manager from austria."
+        />
+        <meta
+            name="keywords"
+            content="moonbyte, m00nbyte, developer, programmer, coder, engineer, manager, trainer, web design, ecommerce, e-commerce, it consulting, it security, network security, web security, security, training, support, html, html5, css, css3, javascript, typescript, nextjs, tailwindcss, rollup, mongodb, redis"
+        />
+        <meta name="robots" content="all" />
+        <link rel="canonical" href="https://moonbyte.at/" />
         <link rel="manifest" href="/manifest.json" />
         <link type="text/plain" rel="author" href="/humans.txt" />
         <link rel="shortcut icon" href="/favicon.ico?v=1" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Megrim&display=swap" />
         <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/desktop/icon_16x16.png?v=1" />
         <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/desktop/icon_32x32.png?v=1" />
         <link rel="icon" type="image/png" sizes="36x36" href="/img/icons/android/icon_36x36.png?v=1" />
@@ -30,19 +43,10 @@
         <link rel="msapplication-TileImage" type="image/png" sizes="150x150" href="/img/icons/ms/icon_150x150.png?v=1" />
         <link rel="msapplication-TileImage" type="image/png" sizes="310x310" href="/img/icons/ms/icon_310x310.png?v=1" />
         <link rel="mask-icon" href="/img/icons/apple/safari-pinned-tab.svg?v=1" color="#111827" />
-        <meta name="theme-color" content="#111827" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="application-name" content="moonbyte • beyond the limits" />
         <meta name="apple-mobile-web-app-title" content="moonbyte • beyond the limits" />
-        <meta
-            name="description"
-            content="I am a senior web developer, network administrator and IT security manager from austria."
-        />
-        <meta
-            name="keywords"
-            content="moonbyte, m00nbyte, developer, programmer, coder, ecommerce, e-commerce, it consulting, it security, network security, web security, security, html, html5, css, css3, javascript, typescript, nextjs, tailwindcss, rollup, mongodb, redis"
-        />
-        <link rel="canonical" href="https://moonbyte.at/" />
+        <meta name="application-name" content="moonbyte • beyond the limits" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="theme-color" content="#111827" />
         <meta name="owner" content="m00nbyte" />
         <meta name="author" content="m00nbyte" />
         <meta name="designer" content="m00nbyte" />
@@ -65,7 +69,7 @@
             content="I am a senior web developer, network administrator and IT security manager from austria."
         />
         <meta name="twitter:image" content="https://moonbyte.at/img/logo/logo_social.png" />
-        <meta name="msapplication-config" content="/icons/ms/browserconfig.xml?v=1" />
+        <meta name="msapplication-config" content="/img/icons/ms/browserconfig.xml?v=1" />
         <meta name="msapplication-TileColor" content="#111827" />
         <meta name="audience" content="all" />
         <meta name="coverage" content="Worldwide" />
@@ -105,10 +109,19 @@
             }
         </script>
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.css"
+            integrity="sha256-ygRrixsQlBByBZiOcJamh7JByO9fP+/l5UPtKNJmRsE="
+            crossorigin="anonymous"
+        />
         <link rel="stylesheet" href="/bundle.min.css" />
 
-        <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.umd.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.umd.js"
+            integrity="sha256-Emf9M/zzq0BDp8xizJJZosZvg59pUhb3c37Te3s+YuY="
+            crossorigin="anonymous"
+        ></script>
         <script type="module" src="/bundle.min.js"></script>
 
         <script type="text/plain" data-category="analytics">

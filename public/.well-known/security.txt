@@ -1,4 +1,0 @@
-Contact: office[at]moonbyte[dot]at
-Encryption: https://keybase.pub/m00nbyte/public-key.asc
-Preferred-Languages: en, de
-Canonical: https://moonbyte.at/.well-known/security.txt

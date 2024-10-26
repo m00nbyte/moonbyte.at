@@ -1,121 +1,37 @@
-/* stars background */
+@use '_scrollbar'
 @use '_stars'
+@use '_noise'
+@use '_underline'
+@use '_hamburger'
+@use '_chevron'
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Megrim&display=swap')
-
+/* tailwind layers */
 @tailwind base
 @tailwind components
 @tailwind utilities
+
+/* dynamic background */
+.bg-dynamic
+    &:not(#landing):nth-child(odd)
+        @apply bg-stone-900
+
+    &:nth-child(even)
+        @apply bg-stone-800
+
+/* inifinite slider */
+.slide-left-infinite
+    animation: slide-left 30s linear infinite
 
 @layer utilities
     .animation-pause
         animation-play-state: paused
 
-/* custom scrollbar */
-:root
-    --scrollbar-thumb: #3b3b3b
-    --scrollbar-track: #222222
-
-html
-    scroll-behavior: smooth
-
-::-webkit-scrollbar,
-textarea::-webkit-scrollbar,
-pre::-webkit-scrollbar
-    width: 8px
-    height: 8px
-
-::-webkit-scrollbar-thumb,
-textarea::-webkit-scrollbar-thumb,
-pre::-webkit-scrollbar-thumb
-    background-color: var(--scrollbar-thumb)
-    border-radius: 4px
-
-::-webkit-scrollbar-track,
-textarea::-webkit-scrollbar-track,
-pre::-webkit-scrollbar-track
-    background-color: var(--scrollbar-track)
-
-/* static noise background */
-.bg-noise
-    position: fixed
-    top: -50%
-    left: -50%
-    right: -50%
-    bottom: -50%
-    width: 200%
-    height: 200vh
-    background: transparent url('/img/noise.webp') repeat 0 0
-    background-repeat: repeat
-    animation: bg-animation 0.2s infinite
-    opacity: 0.8
-    visibility: visible
-
-    @keyframes bg-animation
-        0%
-            transform: translate(0, 0)
-        10%
-            transform: translate(-5%, -5%)
-        20%
-            transform: translate(-10%, 5%)
-        30%
-            transform: translate(5%, -10%)
-        40%
-            transform: translate(-5%, 15%)
-        50%
-            transform: translate(-10%, 5%)
-        60%
-            transform: translate(15%, 0)
-        70%
-            transform: translate(0, 10%)
-        80%
-            transform: translate(-15%, 0)
-        90%
-            transform: translate(10%, 5%)
-        100%
-            transform: translate(5%, 0)
-
-/* dynamic section background */
-.bg-dynamic:not(#landing):nth-child(odd)
-    @apply bg-neutral-900
-
-.bg-dynamic:nth-child(even)
-    @apply bg-stone-900
-
-/* dynamic underline */
-.custom-underline
-    @apply relative
-
-.custom-underline::before
-    @apply absolute
-    @apply w-0
-    @apply h-0.5
-    @apply bottom-0
-    @apply content-['']
-    @apply bg-black
-    @apply dark:bg-white
-    @apply opacity-0
-    @apply transition-all
-    @apply duration-500
-    @apply ease-in-out
-
-.custom-underline.nav-active::before,
-.custom-underline:not(.nav-active):hover::before
-    @apply opacity-100
-    @apply w-full
-
-.underline-none.nav-active::before,
-.underline-none:not(.nav-active)::before
-    @apply w-full
-
-.underline-down.nav-active::before,
-.underline-up:not(.nav-active)::before
-    @apply left-0
-
-.underline-up.nav-active::before,
-.underline-down:not(.nav-active)::before
-    @apply right-0
+@keyframes slide-left
+    from
+        transform: translateX(0)
+    to
+        transform: translateX(-100%)
 
 /* contact form */
 #message_box
-    height: 200px
+    @apply h-52

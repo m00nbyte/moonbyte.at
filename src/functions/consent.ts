@@ -89,26 +89,4 @@ const initializeConsent = (strings: ConsentText): void => {
     cookiePreferencesButton?.addEventListener('click', CookieConsent.showPreferences);
 };
 
-/**
- * Delays the initialization of the consent modal until the user interacts with the page.
- *
- * @param {ConsentText} consent - The consent text object used in the cookie consent modals.
- * @returns {void} This function has no output.
- */
-const delayConsent = (consent: ConsentText): void => {
-    const interactionEvents = ['mousemove', 'click', 'keydown', 'touchstart', 'scroll'];
-    let interactionHappened = false;
-
-    const handleInteraction = () => {
-        if (!interactionHappened) {
-            interactionEvents.forEach((event) => document.removeEventListener(event, handleInteraction));
-            interactionHappened = true;
-
-            initializeConsent(consent);
-        }
-    };
-
-    interactionEvents.forEach((event) => document.addEventListener(event, handleInteraction));
-};
-
-export { initializeConsent, delayConsent };
+export { initializeConsent };
