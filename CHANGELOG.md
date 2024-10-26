@@ -1,7 +1,8 @@
 # Changelog
 
-## 1.0.2 - 2024-10-26
+## 1.0.2 - 2024-10-27
 
+-   change: move csp to cloudflare
 -   change: mostly typings
 -   fix: minor stuff
 -   change: add CNAME file
