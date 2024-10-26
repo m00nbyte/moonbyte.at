@@ -216,12 +216,9 @@ const initializeNavbar = (): void => {
         const navLinks = document.querySelectorAll('#navbar a') as NodeListOf<HTMLLinkElement>;
         navLinks.forEach((link) => link.addEventListener('click', (event) => handleNavLinkClick(navLinks, navToggle, event)));
 
-        const burgerMenu = document.querySelector<HTMLDivElement>('#burger-menu');
-        if (!burgerMenu) return;
-
         navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('close');
             mobileNavActive = !mobileNavActive;
-            burgerMenu.classList.toggle('close');
 
             document.body.style.overflow = mobileNavActive ? 'hidden' : '';
             navRight.className = mobileNavActive

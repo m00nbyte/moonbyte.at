@@ -1,12 +1,16 @@
-#burger-menu
+#nav_toggle
     @apply relative
     @apply h-6
     @apply w-6
+    @apply mt-1
     @apply z-20
     @apply overflow-visible
     @apply cursor-pointer
+    @apply md:hidden
 
-    span, span::before, span::after
+    span:not(.sr-only),
+    span:not(.sr-only)::before,
+    span:not(.sr-only)::after
         @apply block
         @apply absolute
         @apply bg-white
@@ -16,10 +20,11 @@
         @apply duration-500
         @apply ease-in-out
 
-    span::before, span::after
+    span:not(.sr-only)::before,
+    span:not(.sr-only)::after
         @apply content-['']
 
-    span
+    span:not(.sr-only)
         @apply right-0
         @apply top-[9px]
         @apply w-6
