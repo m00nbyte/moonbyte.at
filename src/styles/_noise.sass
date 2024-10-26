@@ -1,18 +1,19 @@
 .bg-noise
-    position: fixed
-    top: -50%
-    left: -50%
-    right: -50%
-    bottom: -50%
-    width: 200%
-    height: 200vh
-    background: transparent url('/img/noise.webp') repeat 0 0
-    background-repeat: repeat
-    animation: bg-animation 0.2s infinite
-    opacity: 0.8
-    visibility: visible
+    animation: noise 0.2s infinite
 
-@keyframes bg-animation
+    @apply fixed
+    @apply top-[-50%]
+    @apply left-[-50%]
+    @apply right-[-50%]
+    @apply bottom-[-50%]
+    @apply w-[200vw]
+    @apply h-[200vh]
+    @apply bg-[url('/img/noise.webp')]
+    @apply bg-repeat
+    @apply opacity-80
+    @apply visible
+
+@keyframes noise
     0%
         transform: translate(0, 0)
     10%

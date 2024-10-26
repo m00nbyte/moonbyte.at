@@ -14,13 +14,15 @@ let lastMousePos = 0;
  * @param {MouseEvent} event - The mouse event that triggers the start of dragging.
  * @returns {boolean} Always returns false to prevent default behavior.
  */
-const startDrag = (container: HTMLTextAreaElement, event: MouseEvent): boolean => {
-    const { clientY } = event;
+const startDrag = (container: HTMLTextAreaElement, { clientY }: MouseEvent): boolean => {
+    const {
+        documentElement: { scrollTop }
+    } = document;
 
     container.blur();
     container.style.opacity = '0.25';
 
-    lastMousePos = clientY + document.documentElement.scrollTop;
+    lastMousePos = clientY + scrollTop;
     staticOffset = +container.style.height.slice(0, -2) - lastMousePos;
 
     document.onmousemove = (event) => performDrag(container, event);
@@ -37,9 +39,12 @@ const startDrag = (container: HTMLTextAreaElement, event: MouseEvent): boolean =
  * @param {MouseEvent} event - The mouse event that occurs during the drag.
  * @returns {boolean} Returns false if the minimum height is reached to end the drag.
  */
-const performDrag = (container: HTMLTextAreaElement, event: MouseEvent): boolean => {
-    const { clientY } = event;
-    const tmpMousePos = clientY + document.documentElement.scrollTop;
+const performDrag = (container: HTMLTextAreaElement, { clientY }: MouseEvent): boolean => {
+    const {
+        documentElement: { scrollTop }
+    } = document;
+
+    const tmpMousePos = clientY + scrollTop;
     let newMousePos = staticOffset + tmpMousePos;
 
     if (lastMousePos >= tmpMousePos) {
@@ -78,18 +83,16 @@ const endDrag = (container: HTMLTextAreaElement): boolean => {
  */
 const initializeTextarea = (): void => {
     const textareaContainer = document.querySelector<HTMLTextAreaElement>('#message_box');
-    const textareaElement = document.querySelector<HTMLTextAreaElement>('#message_input');
-    const textareaGrab = document.querySelector<HTMLDivElement>('#message_grab');
-    if (!textareaContainer || !textareaElement || !textareaGrab) return;
+    const textareaElement = textareaContainer?.querySelector<HTMLTextAreaElement>('#message_input');
+    const textareaGrab = textareaContainer?.querySelector<HTMLDivElement>('#message_grab');
+    const textareaCount = document.querySelector<HTMLDivElement>('#message_count');
+    if (!textareaContainer || !textareaElement || !textareaGrab || !textareaCount) return;
 
     textareaContainer.style.height = `${minHeight}px`;
 
     textareaElement.addEventListener('input', (e: Event): void => {
-        const target = <HTMLTextAreaElement>e.target;
-        const textareaCount = document.querySelector<HTMLDivElement>('#message_count');
-        if (!textareaCount) return;
-
-        textareaCount.textContent = (1000 - target.value.length).toString();
+        const { value } = <HTMLTextAreaElement>e.target;
+        textareaCount.textContent = (1000 - value.length).toString();
     });
 
     textareaGrab.addEventListener('mousedown', (event) => startDrag(textareaContainer, event));
@@ -139,19 +142,40 @@ const validators: { [key: string]: Function } = {
 };
 
 /**
+ * Validates a specific form field based on its name, type, and value.
+ * If there is an error, it creates an error element and returns false; otherwise, it removes any existing errors.
+ *
+ * @param {FormText} strings - An object containing the error messages and response messages to display.
+ * @param {HTMLInputElement} field - The form field to validate.
+ * @returns {boolean} - Returns true if the field is valid, false otherwise.
+ */
+const validateField = (strings: FormText, field: HTMLInputElement): boolean => {
+    const { name, type, value, checked } = field;
+
+    const newValue = type === 'checkbox' ? checked : value;
+    const hasError = validators[name.toLowerCase()]?.(newValue);
+
+    if (hasError) {
+        createErrorElement(field, <string>strings[hasError]);
+    } else {
+        removeErrorElement(field);
+    }
+
+    return !hasError;
+};
+
+/**
  * Removes any existing error element associated with the given input or textarea field.
  *
- * @param {HTMLInputElement | HTMLTextAreaElement} field - The input or textarea field from which to remove the error element.
+ * @param {HTMLElement} parentElement - The parent element which contains the error element.
  * @returns {void} This function has no output.
  */
-const removeErrorElement = (field: HTMLInputElement | HTMLTextAreaElement): void => {
-    const parentElement = field.parentElement;
-    if (!parentElement) return;
-
+const removeErrorElement = (parentElement: HTMLElement): void => {
     const errorDiv = parentElement.querySelector<HTMLDivElement>('.input_error');
-    if (!errorDiv) return;
 
-    errorDiv.remove();
+    if (errorDiv) {
+        errorDiv.remove();
+    }
 };
 
 /**
@@ -161,13 +185,12 @@ const removeErrorElement = (field: HTMLInputElement | HTMLTextAreaElement): void
  * @param {string} error - The error message to display.
  * @returns {void} This function has no output.
  */
-const createErrorElement = (field: HTMLInputElement | HTMLTextAreaElement, error: string): void => {
-    const parentElement = field.parentElement;
+const createErrorElement = ({ type, parentElement }: HTMLInputElement | HTMLTextAreaElement, error: string): void => {
     if (!parentElement) return;
 
-    removeErrorElement(field);
+    removeErrorElement(parentElement);
 
-    const divPosition = field.type === 'checkbox' ? '-top-0.5 right-0' : 'top-[0.6rem] right-2';
+    const divPosition = type === 'checkbox' ? '-top-0.5 right-0' : 'top-[0.6rem] right-2';
 
     const updateError = document.createElement('div');
     updateError.className = `input_error absolute flex flex-row items-center justify-center h-6 gap-2 pl-2 pr-2 text-xs shadow-xs bg-rose-800 ${divPosition}`;
@@ -193,21 +216,23 @@ const createFormResponse = (
     form: HTMLFormElement,
     {
         success,
-        content
+        content: { title, message, color }
     }: {
         success: boolean;
-        content: { title: string; message: string; color: string };
+        content: {
+            title: string;
+            message: string;
+            color: string;
+        };
     }
 ): void => {
-    const { title, message, color } = content;
+    const formSubmit = form.querySelector<HTMLDivElement>('#form_submit');
+    if (!formSubmit) return;
 
     const formResponse = document.createElement('div');
     formResponse.id = 'form_response';
     formResponse.className = `absolute flex-row flex items-center w-full gap-3 top-0 px-3 py-2.5 shadow-xs cursor-default ${color}`;
     formResponse.innerHTML = `<span class="text-lg font-bold tracking-tight">${title}</span><span class="text-base">${message}</span>`;
-
-    const formSubmit = document.querySelector<HTMLDivElement>('#form_submit');
-    if (!formSubmit) return;
 
     formSubmit.appendChild(formResponse);
 
@@ -234,37 +259,15 @@ const initializeForm = (strings: FormText): void => {
     const formContainer = document.querySelector<HTMLFormElement>('#contact_form');
     if (!formContainer) return;
 
-    const formElements = Array.from(formContainer.elements) as HTMLInputElement[];
-
-    /**
-     * Validates a specific form field based on its name, type, and value.
-     * If there is an error, it creates an error element and returns false; otherwise, it removes any existing errors.
-     *
-     * @param {HTMLInputElement} field - The form field to validate.
-     * @returns {boolean} - Returns true if the field is valid, false otherwise.
-     */
-    const validateField = (field: HTMLInputElement): boolean => {
-        const { name, type, value, checked } = field;
-
-        const newValue = type === 'checkbox' ? checked : value;
-        const hasError = validators[name.toLowerCase()]?.(newValue);
-
-        if (hasError) {
-            const errorMessage = strings[hasError as keyof object];
-            createErrorElement(field, errorMessage);
-            return false;
-        } else {
-            removeErrorElement(field);
-            return true;
-        }
-    };
+    const formElements = <HTMLInputElement[]>Array.from(formContainer.elements);
+    if (!formElements.length) return;
 
     formElements.forEach((element) => {
-        const field = <HTMLInputElement | HTMLTextAreaElement>element;
+        const { name, type } = element;
 
-        if (validators[field.name.toLowerCase()]) {
-            field.addEventListener(field.type === 'checkbox' ? 'change' : 'input', (event) =>
-                validateField(<HTMLInputElement>event.target)
+        if (validators[name.toLowerCase()]) {
+            element.addEventListener(type === 'checkbox' ? 'change' : 'input', ({ target }) =>
+                validateField(strings, <HTMLInputElement>target)
             );
         }
     });
@@ -274,19 +277,26 @@ const initializeForm = (strings: FormText): void => {
     formContainer.addEventListener('submit', (event) => {
         event.preventDefault();
 
-        if (formElements.every(validateField)) {
+        if (formElements.every((item) => validateField(strings, item))) {
+            const { formId, response: responseText } = strings;
+
             const formData = new FormData(formContainer);
 
             const handleResponse = (status: boolean) =>
-                createFormResponse(formContainer, { success: status, content: <FormResponse>strings.response[+status] });
+                createFormResponse(formContainer, {
+                    success: status,
+                    content: <FormResponse>responseText[+status]
+                });
 
-            fetch(formContainer.action, {
+            fetch(`https://form.taxi/s/${formId}`, {
                 method: 'POST',
-                headers: { Accept: 'application/json' },
+                headers: {
+                    Accept: 'application/json'
+                },
                 body: formData
             })
                 .then((response) => response.json())
-                .then((response) => handleResponse(response.status))
+                .then(({ success }) => handleResponse(success))
                 .catch(() => handleResponse(false));
         }
     });

@@ -1,4 +1,7 @@
-let lastScrollY = window.scrollY;
+let {
+    scrollY: lastScrollY,
+    location: { pathname: currentPath }
+} = window;
 let scrollDirection = 'none';
 // let scrollPercent = 0;
 let mobileNavActive = false;
@@ -43,11 +46,14 @@ const updateStickyNavbar = (navBar: HTMLDivElement): void => {
         clearTimeout(scrollTimeout);
     }
 
-    const logoButton = navBar.querySelector('#logo_button') as HTMLDivElement;
-    const logoText = logoButton.querySelector('#logo_text') as HTMLDivElement;
-    const scrollText = logoButton.querySelector('#logo_scroll') as HTMLDivElement;
+    const logoButton = navBar.querySelector<HTMLDivElement>('#logo_button');
+    if (!logoButton) return;
 
-    const currentScrollY = window.scrollY;
+    const logoText = logoButton.querySelector<HTMLDivElement>('#logo_text');
+    const scrollText = logoButton.querySelector<HTMLDivElement>('#logo_scroll');
+    if (!logoText || !scrollText) return;
+
+    const { scrollY: currentScrollY } = window;
     const isScrolled = currentScrollY > 50;
 
     scrollDirection = currentScrollY > lastScrollY ? 'down' : currentScrollY < lastScrollY ? 'up' : 'none';
@@ -65,7 +71,7 @@ const updateStickyNavbar = (navBar: HTMLDivElement): void => {
         },
         {
             element: navBar,
-            condition: isScrolled || window.location.pathname !== '/',
+            condition: isScrolled || currentPath !== '/',
             classes: {
                 on: ['bg-opacity-100', 'shadow-md'],
                 off: ['bg-opacity-0']
@@ -99,19 +105,20 @@ const updateStickyNavbar = (navBar: HTMLDivElement): void => {
  * Observes the specified sections to update the navigation bar's active link
  * based on the section currently in view.
  *
- * @param {NodeListOf<HTMLElement>} sections - The sections to observe.
+ * @param {HTMLElement[]} sections - The sections to observe.
  * @returns {void} This function has no output.
  */
-const observeSections = (sections: NodeListOf<HTMLElement>): void => {
+const observeSections = (sections: HTMLElement[]): void => {
     const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
+        (entries) =>
+            entries.forEach(({ target: { id: sectionId }, isIntersecting }) => {
                 const navbarLinks = Array.from(document.querySelectorAll('#navbar a'));
+                if (!navbarLinks.length) return;
 
                 toggleUnderline(scrollDirection);
 
                 const [activeLink] = navbarLinks.splice(
-                    navbarLinks.findIndex((item) => item.getAttribute('href') === `#${entry.target.id}`),
+                    navbarLinks.findIndex((item) => item.getAttribute('href') === `#${sectionId}`),
                     1
                 );
 
@@ -119,7 +126,7 @@ const observeSections = (sections: NodeListOf<HTMLElement>): void => {
                     let removeClasses = ['underline-up', 'underline-down', 'underline-none'];
                     let addClasses = [];
 
-                    if (entry.isIntersecting) {
+                    if (isIntersecting) {
                         addClasses.push(`underline-${scrollDirection}`, 'nav-active');
                     } else {
                         removeClasses.push('nav-active');
@@ -129,8 +136,7 @@ const observeSections = (sections: NodeListOf<HTMLElement>): void => {
                     activeLink.classList.remove(...removeClasses);
                     activeLink.classList.add(...addClasses);
                 }
-            });
-        },
+            }),
         {
             root: null,
             threshold: 0.5
@@ -143,14 +149,14 @@ const observeSections = (sections: NodeListOf<HTMLElement>): void => {
 /**
  * Handles click events on navigation links, scrolling smoothly to the target section.
  *
- * @param {NodeListOf<HTMLLinkElement>} navLinks - The navigation links to update.
+ * @param {HTMLLinkElement[]} navLinks - The navigation links to update.
  * @param {Event} event - The click event that triggered this handler.
  * @returns {void} This function has no output.
  */
-const handleNavLinkClick = (navLinks: NodeListOf<HTMLLinkElement>, navToggle: HTMLButtonElement, event: Event): void => {
+const handleNavLinkClick = (navLinks: HTMLLinkElement[], navToggle: HTMLButtonElement, event: Event): void => {
     event.preventDefault();
 
-    const target = event.target as HTMLAnchorElement;
+    const target = <HTMLAnchorElement>event.target;
     const href = target.getAttribute('href') || '';
 
     navLinks.forEach((link) => link.classList.remove('border-white'));
@@ -206,14 +212,16 @@ const initializeNavbar = (): void => {
     window.addEventListener('scroll', () => updateStickyNavbar(navContainer));
     updateStickyNavbar(navContainer);
 
-    if (window.location.pathname === '/') {
-        const sections = document.querySelectorAll('section:not(#landing)') as NodeListOf<HTMLElement>;
+    if (currentPath === '/') {
+        const sections = <HTMLElement[]>Array.from(document.querySelectorAll('section:not(#landing)'));
+        if (!sections.length) return;
+
         observeSections(sections);
 
         window.addEventListener('resize', () => handleScreenSize(navRight));
         handleScreenSize(navRight);
 
-        const navLinks = document.querySelectorAll('#navbar a') as NodeListOf<HTMLLinkElement>;
+        const navLinks = <HTMLLinkElement[]>Array.from(document.querySelectorAll('#navbar a'));
         navLinks.forEach((link) => link.addEventListener('click', (event) => handleNavLinkClick(navLinks, navToggle, event)));
 
         navToggle.addEventListener('click', () => {

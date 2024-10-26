@@ -111,8 +111,8 @@ export type StarsConfig = {
 
 // #region tech stack
 export interface TechStackObject {
-    class: string;
     title: string;
+    icon: string;
 }
 
 export type TechStackList = TechStackObject[];
@@ -164,6 +164,7 @@ export interface FormResponse {
 }
 
 export interface FormText {
+    formId: string;
     required: string;
     minLength: string;
     maxLength: string;
@@ -174,5 +175,6 @@ export interface FormText {
     response: {
         [key: number]: FormResponse;
     };
+    [key: string]: string | object;
 }
 // #endregion

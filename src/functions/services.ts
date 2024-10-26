@@ -10,9 +10,7 @@ const initializeServices = (list: ServiceList): void => {
     const servicesContainer = document.querySelector<HTMLDivElement>('#services_grid');
     if (!servicesContainer) return;
 
-    list.forEach((service) => {
-        const { icon, title, description } = service;
-
+    list.forEach(({ icon, title, description }) => {
         servicesContainer.innerHTML += `<div class="flex flex-col h-full gap-2 bg-opacity-60">
             <div class="flex flex-row items-center gap-4 text-2xl">
                 <span class="${icon} h-7 w-7"></span>

@@ -1,4 +1,5 @@
 import { initializeConsent } from '@functions/consent';
+import { initializeStars } from '@functions/stars';
 import { initializeStack } from '@functions/stack';
 import { initializeServices } from '@functions/services';
 import { initializeRepos } from '@functions/repos';
@@ -13,11 +14,15 @@ import type { MainConfig } from '@root/types';
  * @param {MainConfig} config - The main config for all components.
  * @returns {void} This function has no output.
  */
-const delayRender = (config: MainConfig): void => {
-    const { consent } = config;
-
+const delayRender = ({ consent, stars, stack, services, repos, clients, form }: MainConfig): void => {
     const interactionEvents = ['mousemove', 'click', 'keydown', 'touchstart', 'scroll'];
     let interactionHappened = false;
+
+    // skip delay
+    if (window.location.pathname === '/') {
+        initializeStars(stars);
+        protectEmail();
+    }
 
     const handleInteraction = () => {
         if (!interactionHappened) {
@@ -27,21 +32,11 @@ const delayRender = (config: MainConfig): void => {
             initializeConsent(consent);
 
             if (window.location.pathname === '/') {
-                const { stack, services, repos, clients, form } = config;
-
-                const components: { [key: string]: () => void } = {
-                    stack: () => initializeStack(stack),
-                    services: () => initializeServices(services),
-                    repos: () => initializeRepos(repos),
-                    clients: () => initializeClients(clients),
-                    form: () => initializeForm(form)
-                };
-
-                for (const key in components) {
-                    if (components.hasOwnProperty(key)) {
-                        components[key]?.();
-                    }
-                }
+                initializeStack(stack);
+                initializeServices(services);
+                initializeRepos(repos);
+                initializeClients(clients);
+                initializeForm(form);
             }
         }
     };
@@ -57,26 +52,25 @@ const delayRender = (config: MainConfig): void => {
  * @returns {void} This function has no output.
  */
 const protectEmail = (): void => {
-    const emailElement = document.querySelector<HTMLLinkElement>('.contact_email');
-    if (!emailElement) return;
+    const linkElement = document.querySelector<HTMLLinkElement>('.contact_email');
+    if (!linkElement) return;
 
     /**
-     * Handles the click event on the email element. It decodes the encoded email
-     * and updates the href attribute to create a mailto link.
+     * Handles the first click event on the email element. It decodes the email address and updates the element.
      *
      * @returns {void} This function has no output.
      */
-    const handleClick = (): void => {
-        const encodedEmail = <string>emailElement.textContent;
+    const unlockLink = (): void => {
+        const encodedEmail = <string>linkElement.textContent;
         const decodedEmail = encodedEmail.replace('[at]', String.fromCharCode(64)).replace('[dot]', String.fromCharCode(46));
 
-        emailElement.href = `mailto:${decodedEmail}`;
-        emailElement.textContent = decodedEmail;
+        linkElement.href = `mailto:${decodedEmail}`;
+        linkElement.textContent = decodedEmail;
 
-        emailElement.removeEventListener('click', handleClick);
+        linkElement.removeEventListener('click', unlockLink);
     };
 
-    emailElement.addEventListener('click', handleClick);
+    linkElement.addEventListener('click', unlockLink);
 };
 
 export { delayRender, protectEmail };

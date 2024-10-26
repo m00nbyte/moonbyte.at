@@ -1,49 +1,47 @@
 import type { StarConfig, StarsConfig } from '@root/types';
 
 /**
+ * Animates the star containers by updating their vertical position based on the configured direction and speed.
+ * This function is called recursively using requestAnimationFrame to create a smooth animation effect.
+ *
+ * @param {HTMLDivElement[]} containers - The containers to animate.
+ * @param {string} direction - The movement direction of the containers.
+ * @param {number} speed - The movement speed of the containers.
+ * @returns {void} This function has no output.
+ */
+const animateStars = (containers: HTMLDivElement[], direction: string, speed: number): void => {
+    const speedPerFrame = speed / (60 * 100);
+    const movement = direction === 'up' ? -speedPerFrame : speedPerFrame;
+
+    const boundaries = {
+        min: -100,
+        max: 100
+    };
+
+    containers.forEach((star) => {
+        let pos = parseFloat(star.style.top) + movement;
+
+        star.style.top = `${
+            direction === 'up' && pos <= boundaries.min ? boundaries.max : pos >= boundaries.max ? boundaries.min : pos
+        }%`;
+    });
+
+    requestAnimationFrame(() => animateStars(containers, direction, speed));
+};
+
+/**
  * Animates the stars in the given scrolling container based on the specified configuration.
  *
  * @param {StarsConfig} config - Configuration for the star animation, including direction and speed.
- * @param {HTMLDivElement} scrollingStarsContainer - The container where the stars will be animated.
+ * @param {HTMLDivElement[]} containers - The container where the stars will be animated.
  * @returns {void} This function has no output.
  */
-const animateStars = (config: StarsConfig, scrollingStarsContainer: HTMLDivElement): void => {
-    const { direction = 'up', speed = 50 } = config;
+const setupStars = ({ direction = 'up', speed = 50 }: StarsConfig, containers: HTMLDivElement[]): void => {
+    const originalPositions = [0, 100];
+    const initialPositions = direction === 'up' ? originalPositions : originalPositions.reverse();
+    containers.forEach((star, index) => (star.style.top = `${initialPositions[index]}%`));
 
-    const starsContainers = scrollingStarsContainer.querySelectorAll<HTMLDivElement>(
-        Array.from({ length: 2 }, (_, index) => `#star_container${index + 1}`).join(', ')
-    );
-
-    /**
-     * Animates the star containers by updating their vertical position based on the configured direction and speed.
-     * This function is called recursively using requestAnimationFrame to create a smooth animation effect.
-     *
-     * @param {NodeListOf<HTMLDivElement>} containers - The containers to animate.
-     * @returns {void} This function has no output.
-     */
-    const animate = (containers: NodeListOf<HTMLDivElement>): void => {
-        const speedPerFrame = speed / (60 * 100);
-        const movement = direction === 'up' ? -speedPerFrame : speedPerFrame;
-
-        const boundaries = {
-            min: -100,
-            max: 100
-        };
-
-        containers.forEach((star) => {
-            let pos = parseFloat(star.style.top) + movement;
-
-            pos = direction === 'up' && pos <= boundaries.min ? boundaries.max : pos >= boundaries.max ? boundaries.min : pos;
-            star.style.top = `${pos}%`;
-        });
-
-        requestAnimationFrame(() => animate(containers));
-    };
-
-    const initialPositions = direction === 'up' ? [0, 100] : [100, 0];
-    starsContainers.forEach((star, index) => (star.style.top = `${initialPositions[index]}%`));
-
-    animate(starsContainers);
+    animateStars(containers, direction, speed);
 };
 
 /**
@@ -61,9 +59,9 @@ const deepMergeConfig = <StarsConfig>(target: StarsConfig, source: Partial<Stars
 
             const isObject = (value: any): value is object => value !== null && typeof value === 'object';
 
-            target[key] = (
-                isObject(targetValue) && isObject(sourceValue) ? deepMergeConfig(targetValue, sourceValue) : sourceValue
-            ) as StarsConfig[Extract<keyof StarsConfig, string>];
+            target[key] = <StarsConfig[Extract<keyof StarsConfig, string>]>(
+                (isObject(targetValue) && isObject(sourceValue) ? deepMergeConfig(targetValue, sourceValue) : sourceValue)
+            );
         }
     }
 
@@ -101,15 +99,15 @@ const initializeStars = (options: Partial<StarsConfig>): void => {
 
     if (!mergedConfig.container) return;
 
-    const starsContainer = document.querySelector<HTMLDivElement>(mergedConfig.container);
-    if (!starsContainer) return;
+    const scrollContainer = document.querySelector<HTMLDivElement>(mergedConfig.container);
+    if (!scrollContainer) return;
 
     Array.from({ length: 2 }).forEach((_, index) => {
         const starContainer = document.createElement('div');
         starContainer.id = `star_container${index + 1}`;
         starContainer.style.top = index === 0 ? '0' : '100%';
 
-        Object.entries(mergedConfig.stars as Record<string, StarConfig>).forEach(([size, { count, blinkDuration }]) => {
+        Object.entries(<Record<string, StarConfig>>mergedConfig.stars).forEach(([size, { count, blinkDuration }]) => {
             Array.from({ length: count }).forEach(() => {
                 const star = document.createElement('div');
                 star.className = `stars ${size}`;
@@ -125,10 +123,18 @@ const initializeStars = (options: Partial<StarsConfig>): void => {
             });
         });
 
-        starsContainer.appendChild(starContainer);
+        scrollContainer.appendChild(starContainer);
     });
 
-    animateStars(mergedConfig, starsContainer);
+    const starsContainers = <HTMLDivElement[]>(
+        Array.from(
+            scrollContainer.querySelectorAll<HTMLDivElement>(
+                Array.from({ length: 2 }, (_, index) => `#star_container${index + 1}`).join(', ')
+            )
+        )
+    );
+
+    setupStars(mergedConfig, starsContainers);
 };
 
 export { initializeStars };

@@ -2,7 +2,9 @@
 
 ## 1.0.2 - 2024-10-26
 
+-   change: mostly typings
 -   fix: minor stuff
+-   change: add CNAME file
 -   change: move google fonts
 
 ## 1.0.1 - 2024-10-26

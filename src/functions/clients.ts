@@ -20,7 +20,7 @@ const generateClients = (clients: ClientList): void => {
             </a>`)
     );
 
-    const wrapperClone = wrapper.cloneNode(true) as HTMLDivElement;
+    const wrapperClone = <HTMLDivElement>wrapper.cloneNode(true);
     wrapperClone.classList.remove('ml-16');
 
     container.appendChild(wrapper);
@@ -33,8 +33,8 @@ const generateClients = (clients: ClientList): void => {
  * @param {ClientList} clients - An array of client objects.
  * @returns {void} This function has no output.
  */
-const lazyLoadSlider = (clients: ClientList): void => {
-    const container = document.querySelector<HTMLDivElement>('#showcase');
+const initializeClients = (clients: ClientList): void => {
+    const container = document.querySelector<HTMLDivElement>('#logo_slider')?.closest('section');
     if (!container) return;
 
     const observer = new IntersectionObserver(
@@ -54,4 +54,4 @@ const lazyLoadSlider = (clients: ClientList): void => {
     observer.observe(container);
 };
 
-export { lazyLoadSlider as initializeClients };
+export { initializeClients };

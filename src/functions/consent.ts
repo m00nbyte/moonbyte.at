@@ -22,6 +22,8 @@ declare const CookieConsent: {
  * @returns {void} This function has no output.
  */
 const initializeConsent = (strings: ConsentText): void => {
+    if (!CookieConsent) return;
+
     window.dataLayer = window.dataLayer || [];
 
     window.gtag = function () {

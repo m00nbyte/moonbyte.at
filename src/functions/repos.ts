@@ -10,9 +10,7 @@ const initializeRepos = (list: RepoList): void => {
     const reposContainer = document.querySelector<HTMLDivElement>('#repo_grid');
     if (!reposContainer) return;
 
-    list.forEach((repo) => {
-        const { name, npm } = repo;
-
+    list.forEach(({ name, npm, link }) => {
         reposContainer.innerHTML += `<div class="flex items-center justify-between gap-4 px-4 py-2 border border-stone-800 bg-stone-900">
             <span class="text-base">${name}</span>
             <div class="flex flex-row gap-4 items-center justify-center">
@@ -23,9 +21,9 @@ const initializeRepos = (list: RepoList): void => {
                         : ''
                 }
                 ${
-                    repo.link
-                        ? `<a href="${repo.link.url}" target="_blank" title="${repo.link.title}"><span class="${
-                              repo.link.url.includes('webstore') ? 'icon-[devicon--chrome]' : 'icon-[mdi--globe]'
+                    typeof link === 'object'
+                        ? `<a href="${link.url}" target="_blank" title="${link.title}"><span class="${
+                              link.url.includes('webstore') ? 'icon-[devicon--chrome]' : 'icon-[mdi--globe]'
                           } text-xl mt-1.5"></span></a>`
                         : ''
                 }

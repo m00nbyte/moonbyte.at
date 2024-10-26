@@ -58,15 +58,15 @@
         }
     },
     "stack": [
-        { "class": "icon-[devicon--html5]", "title": "HTML5" },
-        { "class": "icon-[devicon--css3]", "title": "CSS3" },
-        { "class": "icon-[devicon--javascript]", "title": "JavaScript" },
-        { "class": "icon-[devicon--typescript]", "title": "TypeScript" },
-        { "class": "icon-[devicon--nextjs]", "title": "NextJS" },
-        { "class": "icon-[devicon--tailwindcss]", "title": "TailwindCSS" },
-        { "class": "icon-[devicon--rollup]", "title": "RollupJS" },
-        { "class": "icon-[devicon--mongodb]", "title": "MongoDB" },
-        { "class": "icon-[devicon--redis]", "title": "Redis" }
+        { "title": "HTML5", "icon": "icon-[devicon--html5]" },
+        { "title": "CSS3", "icon": "icon-[devicon--css3]" },
+        { "title": "JavaScript", "icon": "icon-[devicon--javascript]" },
+        { "title": "TypeScript", "icon": "icon-[devicon--typescript]" },
+        { "title": "NextJS", "icon": "icon-[devicon--nextjs]" },
+        { "title": "TailwindCSS", "icon": "icon-[devicon--tailwindcss]" },
+        { "title": "RollupJS", "icon": "icon-[devicon--rollup]" },
+        { "title": "MongoDB", "icon": "icon-[devicon--mongodb]" },
+        { "title": "Redis", "icon": "icon-[devicon--redis]" }
     ],
     "services": [
         {
@@ -267,6 +267,7 @@
         }
     ],
     "form": {
+        "formId": "ghzuv923",
         "required": "Field is required",
         "minLength": "Enter more characters",
         "maxLength": "Max. ? characters",

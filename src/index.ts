@@ -1,23 +1,15 @@
 import config from '@root/config.json';
 
 import { initializeNavbar } from '@functions/navbar';
-import { initializeStars } from '@functions/stars';
-import { delayRender, protectEmail } from '@functions/helpers';
+import { delayRender } from '@functions/helpers';
 
 /**
- * Initializes the application on window load.
- * This function sets up the navigation bar, manages consent delay,
- * and initializes various components based on the current path.
+ * This function sets up the navigation bar and initializes various components.
+ *
+ * @returns {void} This function has no output.
  */
-window.onload = () => {
+const initPage = (): void => {
     initializeNavbar();
-    protectEmail();
-
-    if (window.location.pathname === '/') {
-        const { stars } = config;
-        initializeStars(stars);
-    }
-
     delayRender(config);
 
     if ('serviceWorker' in navigator) {
@@ -28,3 +20,5 @@ window.onload = () => {
         ['\n', '👋 Hi there, fellow developer! Thanks for visiting.', '\n', "I'd love to hear what you think!", '\n\n'].join('')
     );
 };
+
+window.onload = initPage;
