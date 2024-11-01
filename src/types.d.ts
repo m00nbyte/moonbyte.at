@@ -114,14 +114,21 @@ export type ServiceList = ServiceObject[];
 // #region repos
 export interface RepoObject {
     name: string;
-    npm: boolean;
-    link?: {
-        title: string;
-        url: string;
-    };
+    type: string;
+    url?: string;
 }
 
 export type RepoList = RepoObject[];
+
+export interface RepoLink {
+    title: string;
+    icon: string;
+    link?: string;
+}
+
+export interface RepoLinkConfig {
+    [key: string]: RepoLink;
+}
 // #endregion
 
 // #region clients

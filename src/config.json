@@ -117,36 +117,30 @@
     ],
     "repos": [
         {
-            "name": "classmix",
-            "npm": true
-        },
-        {
-            "name": "data-extractor",
-            "npm": true
-        },
-        {
-            "name": "currency-converter",
-            "npm": true
-        },
-        {
-            "name": "rollup-plugin-strip-prop-types",
-            "npm": true
+            "name": "animated-starfield",
+            "type": "gh"
         },
         {
             "name": "pretty-url",
-            "npm": false,
-            "link": {
-                "url": "https://prettyurl.dev/",
-                "title": "Visit Website"
-            }
+            "type": "web",
+            "url": "https://prettyurl.dev/"
+        },
+        {
+            "name": "classmix",
+            "type": "npm"
+        },
+        {
+            "name": "data-extractor",
+            "type": "npm"
+        },
+        {
+            "name": "currency-converter",
+            "type": "npm"
         },
         {
             "name": "clear_all_browsing_data",
-            "npm": false,
-            "link": {
-                "url": "https://chromewebstore.google.com/detail/clear-all-browsing-data/nbdjkggggdkmlnajfhidfgfgodlmedia",
-                "title": "Open Chrome Web Store"
-            }
+            "type": "cws",
+            "url": "https://chromewebstore.google.com/detail/clear-all-browsing-data/nbdjkggggdkmlnajfhidfgfgodlmedia"
         }
     ],
     "clients": [

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.4 - 2024-11-02
+
+-   change: update projects
+
 ## 1.0.3 - 2024-11-01
 
 -   change: update starfield animation
