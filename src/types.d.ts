@@ -1,6 +1,7 @@
 // #region general
 declare global {
     interface Window {
+        animatedStarField: (StarsConfig) => void;
         dataLayer: Array<Record<unknown, unknown>>;
         gtag: (...arguments) => void;
     }
@@ -89,24 +90,6 @@ export interface ConsentOptions {
     onFirstConsent?: () => void;
     onChange?: () => void;
 }
-// #endregion
-
-// #region stars
-export interface StarConfig {
-    count: number;
-    blinkDuration: number;
-}
-
-export type StarsConfig = {
-    container?: string;
-    direction?: string;
-    speed?: number;
-    stars?: {
-        small?: StarConfig;
-        medium?: StarConfig;
-        large?: StarConfig;
-    };
-};
 // #endregion
 
 // #region tech stack

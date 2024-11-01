@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.3 - 2024-11-01
+
+-   change: update starfield animation
+
 ## 1.0.2 - 2024-10-27
 
 -   change: move csp to cloudflare

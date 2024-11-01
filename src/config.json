@@ -49,12 +49,27 @@
     },
     "stars": {
         "container": ".scrolling_stars",
-        "direction": "down",
-        "speed": 250,
-        "stars": {
-            "small": { "count": 100, "blinkDuration": 2 },
-            "medium": { "count": 50, "blinkDuration": 2 },
-            "large": { "count": 50, "blinkDuration": 2 }
+        "background": "#141d27",
+        "direction": 0,
+        "sizes": {
+            "small": {
+                "amount": 50,
+                "color": "#ffffff",
+                "speed": 0.8,
+                "blink": 2000
+            },
+            "medium": {
+                "amount": 50,
+                "color": "#ffffff",
+                "speed": 0.6,
+                "blink": 2000
+            },
+            "large": {
+                "amount": 50,
+                "color": "#ffffff",
+                "speed": 0.5,
+                "blink": 2000
+            }
         }
     },
     "stack": [

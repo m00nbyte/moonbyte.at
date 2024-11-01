@@ -1,5 +1,4 @@
 import { initializeConsent } from '@functions/consent';
-import { initializeStars } from '@functions/stars';
 import { initializeStack } from '@functions/stack';
 import { initializeServices } from '@functions/services';
 import { initializeRepos } from '@functions/repos';
@@ -20,7 +19,7 @@ const delayRender = ({ consent, stars, stack, services, repos, clients, form }: 
 
     // skip delay
     if (window.location.pathname === '/') {
-        initializeStars(stars);
+        window.animatedStarField(stars);
         protectEmail();
     }
 
