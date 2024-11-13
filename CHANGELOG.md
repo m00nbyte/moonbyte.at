@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.5 - 2024-11-13
+
+-   change: update code
+-   fix: cookie link
+-   fix: form error messages
+
 ## 1.0.4 - 2024-11-02
 
 -   change: update projects

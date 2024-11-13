@@ -10,9 +10,6 @@ module.exports = {
             body: ['Fira Sans']
         },
         extend: {
-            backgroundImage: {
-                'gradient-radial': 'radial-gradient(ellipse at bottom, #1b2735 0, #090a0f 100%)'
-            },
             keyframes: {
                 wave: {
                     '0%': { transform: 'rotate(0.0deg)' },
