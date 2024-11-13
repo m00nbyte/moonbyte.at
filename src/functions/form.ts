@@ -110,7 +110,7 @@ const validators: { [key: string]: Function } = {
         return (
             (trimmed === '' && 'required') ||
             (trimmed.length < 3 && 'minLength') ||
-            (trimmed.length > 100 && 'maxLength'.replace('?', '100')) ||
+            (trimmed.length > 100 && 'maxLength') ||
             (charRegex.test(trimmed) && 'invalidChars') ||
             null
         );
@@ -121,7 +121,7 @@ const validators: { [key: string]: Function } = {
         return (
             (trimmed === '' && 'required') ||
             (trimmed.length < 3 && 'minLength') ||
-            (trimmed.length > 100 && 'maxLength'.replace('X', '100')) ||
+            (trimmed.length > 100 && 'maxLength') ||
             (!emailRegex.test(trimmed) && 'invalidEmail') ||
             null
         );
@@ -158,7 +158,7 @@ const validateField = (strings: FormText, field: HTMLInputElement): boolean => {
     if (hasError) {
         createErrorElement(field, <string>strings[hasError]);
     } else {
-        removeErrorElement(field);
+        removeErrorElement(<HTMLElement>field.parentElement);
     }
 
     return !hasError;
@@ -171,6 +171,8 @@ const validateField = (strings: FormText, field: HTMLInputElement): boolean => {
  * @returns {void} This function has no output.
  */
 const removeErrorElement = (parentElement: HTMLElement): void => {
+    if (!parentElement) return;
+
     const errorDiv = parentElement.querySelector<HTMLDivElement>('.input_error');
 
     if (errorDiv) {
