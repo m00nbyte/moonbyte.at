@@ -86,9 +86,6 @@ const initializeConsent = (strings: ConsentText): void => {
         ad_user_data: 'denied',
         ad_personalization: 'denied'
     });
-
-    const cookiePreferencesButton = document.querySelector<HTMLButtonElement>('#cookie_preferences');
-    cookiePreferencesButton?.addEventListener('click', CookieConsent.showPreferences);
 };
 
 export { initializeConsent };

@@ -87,8 +87,6 @@ export interface ConsentOptions {
         marketing?: ConsentCategory;
     };
     language: ConsentText;
-    onFirstConsent?: () => void;
-    onChange?: () => void;
 }
 // #endregion
 

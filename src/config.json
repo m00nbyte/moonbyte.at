@@ -5,7 +5,7 @@
             "en": {
                 "consentModal": {
                     "title": "🍪 Want some cookies?",
-                    "description": "This website uses cookies to enhance your experience and analyze our traffic. Cookies are small text files stored on your device that help us remember your preferences, improve site functionality, and provide you with personalized content.\n\n<button type=\"button\" class=\"!text-stone-300 !underline !mt-2 hover:!text-stone-100 !transition-all\" onclick=\"CookieConsent.showPreferences();\">Manage preferences</button>",
+                    "description": "This website uses cookies to enhance your experience and analyze our traffic. Cookies are small text files stored on your device that help us remember your preferences, improve site functionality, and provide you with personalized content.\n\n<button type=\"button\" class=\"ga-cb !text-stone-300 !underline !mt-2 hover:!text-stone-100 !transition-all\" data-cc=\"show-preferencesModal\">Manage preferences</button>",
                     "acceptAllBtn": "Accept all",
                     "acceptNecessaryBtn": "Reject all",
                     "showPreferencesBtn": ""
