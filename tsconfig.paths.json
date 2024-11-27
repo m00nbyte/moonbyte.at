@@ -3,7 +3,8 @@
         "baseUrl": "./",
         "paths": {
             "@root/*": ["./src/*"],
-            "@functions/*": ["./src/functions/*"]
+            "@functions/*": ["./src/functions/*"],
+            "@types": ["./src/types.d.ts"]
         }
     }
 }

@@ -157,121 +157,79 @@
         {
             "title": "Storeroom",
             "url": "https://storeroom.at/",
-            "img": {
-                "src": "/img/clients/storeroom.webp",
-                "width": "64",
-                "height": "64"
-            },
+            "src": "/img/clients/storeroom.webp",
             "classes": "h-16"
         },
         {
             "title": "Kibox",
             "url": "https://kibox.at/",
-            "img": {
-                "src": "/img/clients/kibox.webp",
-                "width": "100",
-                "height": "40"
-            },
+            "src": "/img/clients/kibox.webp",
             "classes": "h-10"
+        },
+        {
+            "title": "WIFI",
+            "url": "https://wifiwien.at/",
+            "src": "/img/clients/wifi.webp",
+            "classes": "h-12"
         },
         {
             "title": "PolypFarm",
             "url": "https://polyp.farm/",
-            "img": {
-                "src": "/img/clients/polyp_farm.webp",
-                "width": "117.64",
-                "height": "40"
-            },
+            "src": "/img/clients/polyp_farm.webp",
             "classes": "h-10"
         },
         {
             "title": "Farmer Panorama",
             "url": "https://farmerpanorama.com/",
-            "img": {
-                "src": "/img/clients/farmer_panorama.webp",
-                "width": "56",
-                "height": "56"
-            },
+            "src": "/img/clients/farmer_panorama.webp",
             "classes": "h-14"
         },
         {
             "title": "Elke Altenberger",
             "url": "https://altenbergerinteriordesign.at/",
-            "img": {
-                "src": "/img/clients/elke_altenberger.webp",
-                "width": "56",
-                "height": "56"
-            },
+            "src": "/img/clients/elke_altenberger.webp",
             "classes": "h-14"
         },
         {
             "title": "AMZ",
             "url": "https://amz.at/",
-            "img": {
-                "src": "/img/clients/amz.webp",
-                "width": "45.44",
-                "height": "48"
-            },
+            "src": "/img/clients/amz.webp",
             "classes": "h-12 px-2 invert"
         },
         {
             "title": "Nicolodi Consulting",
             "url": "https://nicolodi-consulting.com/",
-            "img": {
-                "src": "/img/clients/nicolodi_consulting.webp",
-                "width": "49.33",
-                "height": "40"
-            },
+            "src": "/img/clients/nicolodi_consulting.webp",
             "classes": "h-10"
         },
         {
             "title": "Body Concept",
             "url": "https://bodyconceptvienna.at/",
-            "img": {
-                "src": "/img/clients/body_concept.webp",
-                "width": "66.83",
-                "height": "56"
-            },
+            "src": "/img/clients/body_concept.webp",
             "classes": "h-14 invert saturate-200"
         },
         {
             "title": "Turys",
             "url": "https://turys.at/",
-            "img": {
-                "src": "/img/clients/turys.webp",
-                "width": "",
-                "height": ""
-            },
+            "src": "/img/clients/turys.webp",
             "classes": "h-14"
         },
         {
             "title": "Tapkey",
             "url": "https://tapkey.com/",
-            "img": {
-                "src": "/img/clients/tapkey.webp",
-                "width": "96.96",
-                "height": "32"
-            },
+            "src": "/img/clients/tapkey.webp",
             "classes": "h-8"
         },
         {
             "title": "Einzigartig Architektur",
             "url": "https://ea-arch.at/",
-            "img": {
-                "src": "/img/clients/einzigartig_architektur.webp",
-                "width": "100",
-                "height": "32"
-            },
+            "src": "/img/clients/einzigartig_architektur.webp",
             "classes": "h-8 invert"
         },
         {
             "title": "Bluesky Immunotherapies",
             "url": "https://blueskyvaccines.com/",
-            "img": {
-                "src": "/img/clients/bluesky_immunotherapies.webp",
-                "width": "213.33",
-                "height": "32"
-            },
+            "src": "/img/clients/bluesky_immunotherapies.webp",
             "classes": "h-8 invert"
         }
     ],

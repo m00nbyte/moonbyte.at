@@ -13,12 +13,11 @@ const generateClients = (clients: ClientList): void => {
     const wrapper = document.createElement('div');
     wrapper.className = 'inline-block ml-16 slide-left-infinite group-hover:animation-pause w-max grayscale';
 
-    clients.forEach(
-        ({ url, title, img: { src }, classes }) =>
-            (wrapper.innerHTML += `<a href="${url}" target="_blank" title="${title}">
-                <img src="${src}" class="inline mx-8 transition-all opacity-80 hover:opacity-100 ${classes}" alt="${title}" />
-            </a>`)
-    );
+    for (const { url, title, src, classes } of clients) {
+        wrapper.innerHTML += `<a href="${url}" target="_blank" title="${title}">
+        <img src="${src}" class="inline mx-8 transition-all opacity-80 hover:opacity-100 ${classes}" alt="${title}" />
+    </a>`;
+    }
 
     const wrapperClone = <HTMLDivElement>wrapper.cloneNode(true);
     wrapperClone.classList.remove('ml-16');
@@ -34,24 +33,29 @@ const generateClients = (clients: ClientList): void => {
  * @returns {void} This function has no output.
  */
 const initializeClients = (clients: ClientList): void => {
-    const container = document.querySelector<HTMLDivElement>('#logo_slider')?.closest('section');
+    const container = document.querySelector<HTMLDivElement>('#logo_slider');
     if (!container) return;
 
+    const section = container.closest('section');
+    if (!section) return;
+
     const observer = new IntersectionObserver(
-        (entries, observer) =>
-            entries.forEach((entry) => {
+        (entries, observer) => {
+            for (const entry of entries) {
                 if (entry.isIntersecting) {
                     generateClients(clients);
                     observer.disconnect();
+                    break;
                 }
-            }),
+            }
+        },
         {
             root: null,
             threshold: 0.1
         }
     );
 
-    observer.observe(container);
+    observer.observe(section);
 };
 
 export { initializeClients };

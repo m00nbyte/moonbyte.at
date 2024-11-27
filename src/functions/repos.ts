@@ -31,7 +31,7 @@ const initializeRepos = (list: RepoList): void => {
         }
     };
 
-    list.forEach(({ name, type, url }) => {
+    for (const { name, type, url } of list) {
         const mappedConfig = linkMap[type];
         if (!mappedConfig) return;
 
@@ -45,7 +45,7 @@ const initializeRepos = (list: RepoList): void => {
                 }" target="_blank" title="${title}"><span class="${icon} text-xl mt-1.5"></span></a>
             </div>
         </div>`;
-    });
+    }
 };
 
 export { initializeRepos };

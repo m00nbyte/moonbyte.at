@@ -13,12 +13,43 @@
             content="moonbyte, m00nbyte, developer, programmer, coder, engineer, manager, trainer, web design, ecommerce, e-commerce, it consulting, it security, network security, web security, security, training, support, html, html5, css, css3, javascript, typescript, nextjs, tailwindcss, rollup, mongodb, redis"
         />
         <meta name="robots" content="all" />
+        <meta name="owner" content="m00nbyte" />
+        <meta name="author" content="m00nbyte" />
+        <meta name="designer" content="m00nbyte" />
+        <meta name="audience" content="all" />
+        <meta name="coverage" content="Worldwide" />
+        <meta name="classification" content="Business" />
+        <meta name="revisit-after" content="7 days" />
         <link rel="canonical" href="https://moonbyte.at/" />
-        <link rel="manifest" href="/manifest.json" />
-        <link type="text/plain" rel="author" href="/humans.txt" />
-        <link rel="shortcut icon" href="/favicon.ico?v=1" />
+
+        <!-- Preconnect external resources -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+
+        <!-- Preload stylesheets -->
+        <link
+            rel="preload"
+            href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Megrim&display=swap"
+            as="style"
+            integrity="sha256-FzZUmcXGwlEr1lCsXNKGCHlRG7rRN1k2O+dubymdvPE="
+            crossorigin="anonymous"
+        />
+        <link
+            rel="preload"
+            href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.css"
+            as="style"
+            integrity="sha256-ygRrixsQlBByBZiOcJamh7JByO9fP+/l5UPtKNJmRsE="
+            crossorigin="anonymous"
+        />
+        <link rel="preload" href="/bundle.min.css" as="style" />
+
+        <!-- Files -->
+        <link rel="manifest" href="/manifest.json" />
+        <link type="text/plain" rel="author" href="/humans.txt" />
+
+        <!-- Favicons -->
+        <link rel="shortcut icon" href="/favicon.ico?v=1" />
         <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/desktop/icon_16x16.png?v=1" />
         <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/desktop/icon_32x32.png?v=1" />
         <link rel="icon" type="image/png" sizes="36x36" href="/img/icons/android/icon_36x36.png?v=1" />
@@ -28,23 +59,28 @@
         <link rel="icon" type="image/png" sizes="144x144" href="/img/icons/android/icon_144x144.png?v=1" />
         <link rel="icon" type="image/png" sizes="192x192" href="/img/icons/android/icon_192x192.png?v=1" />
         <link rel="icon" type="image/png" sizes="512x512" href="/img/icons/android/icon_512x512.png?v=1" />
+
+        <!-- Apple -->
+        <link rel="mask-icon" href="/img/icons/apple/safari-pinned-tab.svg?v=1" color="#111827" />
         <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="/img/icons/ios/icon_120x120.png?v=1" />
         <link rel="apple-touch-icon" type="image/png" sizes="152x152" href="/img/icons/ios/icon_152x152.png?v=1" />
         <link rel="apple-touch-icon" type="image/png" sizes="167x167" href="/img/icons/ios/icon_167x167.png?v=1" />
         <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/img/icons/ios/icon_180x180.png?v=1" />
         <link rel="apple-touch-icon" type="image/png" sizes="1024x1024" href="/img/icons/ios/icon_1024x1024.png?v=1" />
-        <link rel="msapplication-TileImage" type="image/png" sizes="70x70" href="/img/icons/ms/icon_70x70.png?v=1" />
-        <link rel="msapplication-TileImage" type="image/png" sizes="144x144" href="/img/icons/ms/icon_144x144.png?v=1" />
-        <link rel="msapplication-TileImage" type="image/png" sizes="150x150" href="/img/icons/ms/icon_150x150.png?v=1" />
-        <link rel="msapplication-TileImage" type="image/png" sizes="310x310" href="/img/icons/ms/icon_310x310.png?v=1" />
-        <link rel="mask-icon" href="/img/icons/apple/safari-pinned-tab.svg?v=1" color="#111827" />
-        <meta name="apple-mobile-web-app-title" content="moonbyte • beyond the limits" />
+
+        <!-- Microsoft -->
+        <meta name="msapplication-TileImage" content="/img/icons/ms/icon_70x70.png?v=1" />
+        <meta name="msapplication-TileImage" content="/img/icons/ms/icon_144x144.png?v=1" />
+        <meta name="msapplication-TileImage" content="/img/icons/ms/icon_150x150.png?v=1" />
+        <meta name="msapplication-TileImage" content="/img/icons/ms/icon_310x310.png?v=1" />
+
+        <!-- Other -->
         <meta name="application-name" content="moonbyte • beyond the limits" />
+        <meta name="apple-mobile-web-app-title" content="moonbyte • beyond the limits" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="theme-color" content="#111827" />
-        <meta name="owner" content="m00nbyte" />
-        <meta name="author" content="m00nbyte" />
-        <meta name="designer" content="m00nbyte" />
+
+        <!-- OpenGraph -->
         <meta property="og:site_name" content="moonbyte • beyond the limits" />
         <meta property="og:title" content="beyond the limits" />
         <meta
@@ -55,6 +91,8 @@
         <meta property="og:url" content="https://moonbyte.at/" />
         <meta property="og:image" content="https://moonbyte.at/img/logo/logo_social.png" />
         <meta property="og:locale" content="en_US" />
+
+        <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@m00nbyte" />
         <meta name="twitter:creator" content="@m00nbyte" />
@@ -64,12 +102,12 @@
             content="I am a senior web developer, network administrator and IT security manager from austria."
         />
         <meta name="twitter:image" content="https://moonbyte.at/img/logo/logo_social.png" />
+
+        <!-- Microsoft App -->
         <meta name="msapplication-config" content="/img/icons/ms/browserconfig.xml?v=1" />
         <meta name="msapplication-TileColor" content="#111827" />
-        <meta name="audience" content="all" />
-        <meta name="coverage" content="Worldwide" />
-        <meta name="classification" content="Business" />
-        <meta name="revisit-after" content="7 days" />
+
+        <!-- SchemaORG -->
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
@@ -104,6 +142,7 @@
             }
         </script>
 
+        <!-- Stylesheets -->
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.css"
@@ -112,17 +151,20 @@
         />
         <link rel="stylesheet" href="/bundle.min.css" />
 
+        <!-- Scripts -->
         <script
             src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.umd.js"
             integrity="sha256-Emf9M/zzq0BDp8xizJJZosZvg59pUhb3c37Te3s+YuY="
             crossorigin="anonymous"
+            async
         ></script>
         <script
             src="https://cdn.jsdelivr.net/gh/m00nbyte/animated-starfield@latest/dist/index.iife.min.js"
             integrity="sha256-bd4bXgJk1AHSUCUVIOH5Obcw6nm/0Yba1t2k8cTHqA4="
             crossorigin="anonymous"
+            async
         ></script>
-        <script type="module" src="/bundle.min.js"></script>
+        <script type="module" src="/bundle.min.js" async></script>
 
         <!-- update hash in csp if code snippet changes -->
         <script type="text/plain" data-category="analytics">
@@ -139,6 +181,9 @@
         </script>
     </head>
     <body class="text-white select-none font-body bg-stone-800">
+        <noscript>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Megrim&display=swap" />
+        </noscript>
         <!-- NAVBAR -->
         <!-- SECTIONS -->
         <!-- FOOTER -->

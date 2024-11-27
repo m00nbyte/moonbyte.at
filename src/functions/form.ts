@@ -264,7 +264,7 @@ const initializeForm = (strings: FormText): void => {
     const formElements = <HTMLInputElement[]>Array.from(formContainer.elements);
     if (!formElements.length) return;
 
-    formElements.forEach((element) => {
+    for (const element of formElements) {
         const { name, type } = element;
 
         if (validators[name.toLowerCase()]) {
@@ -272,7 +272,7 @@ const initializeForm = (strings: FormText): void => {
                 validateField(strings, <HTMLInputElement>target)
             );
         }
-    });
+    }
 
     initializeTextarea();
 

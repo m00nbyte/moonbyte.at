@@ -133,11 +133,7 @@ export interface RepoLinkConfig {
 export interface ClientObject {
     title: string;
     url: string;
-    img: {
-        src: string;
-        width: string;
-        height: string;
-    };
+    src: string;
     classes: string;
 }
 

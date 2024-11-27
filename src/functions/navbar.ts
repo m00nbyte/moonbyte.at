@@ -3,7 +3,6 @@ let {
     location: { pathname: currentPath }
 } = window;
 let scrollDirection = 'none';
-// let scrollPercent = 0;
 let mobileNavActive = false;
 let scrollTimeout: number | null = null;
 
@@ -29,10 +28,10 @@ const toggleClasses = (element: HTMLElement, condition: boolean, { on, off }: { 
 const toggleUnderline = (scrollDirection: string): void => {
     const navbarLinks = Array.from(document.querySelectorAll('#navbar a'));
 
-    navbarLinks.forEach((element) => {
+    for (const element of navbarLinks) {
         element.classList.remove('underline-up', 'underline-down', 'underline-none');
         element.classList.add(`underline-${scrollDirection}`);
-    });
+    }
 };
 
 /**
@@ -61,14 +60,7 @@ const updateStickyNavbar = (navBar: HTMLDivElement): void => {
     toggleUnderline(scrollDirection);
 
     const toggleMap = [
-        {
-            element: logoButton,
-            condition: !isScrolled,
-            classes: {
-                on: ['ga-lb'],
-                off: ['ga-bt']
-            }
-        },
+        // navbar opacity
         {
             element: navBar,
             condition: isScrolled || currentPath !== '/',
@@ -77,6 +69,7 @@ const updateStickyNavbar = (navBar: HTMLDivElement): void => {
                 off: ['bg-opacity-0']
             }
         },
+        // logo text (default)
         {
             element: logoText,
             condition: isScrolled,
@@ -85,6 +78,7 @@ const updateStickyNavbar = (navBar: HTMLDivElement): void => {
                 off: ['opacity-100']
             }
         },
+        // logo text (scroll)
         {
             element: scrollText,
             condition: isScrolled,
@@ -92,10 +86,21 @@ const updateStickyNavbar = (navBar: HTMLDivElement): void => {
                 on: ['opacity-100'],
                 off: ['opacity-0', 'z-negative', '-translate-x-3']
             }
+        },
+        // logo ga4 event
+        {
+            element: logoButton,
+            condition: !isScrolled,
+            classes: {
+                on: ['ga-lb'], // default
+                off: ['ga-bt'] // scroll
+            }
         }
     ];
 
-    toggleMap.forEach(({ element, condition, classes }) => toggleClasses(element, condition, classes));
+    for (const { element, condition, classes } of toggleMap) {
+        toggleClasses(element, condition, classes);
+    }
 
     lastScrollY = currentScrollY;
     scrollTimeout = window.setTimeout(() => toggleUnderline('none'), 800);
@@ -110,8 +115,11 @@ const updateStickyNavbar = (navBar: HTMLDivElement): void => {
  */
 const observeSections = (sections: HTMLElement[]): void => {
     const observer = new IntersectionObserver(
-        (entries) =>
-            entries.forEach(({ target: { id: sectionId }, isIntersecting }) => {
+        (entries) => {
+            for (const {
+                target: { id: sectionId },
+                isIntersecting
+            } of entries) {
                 const navbarLinks = Array.from(document.querySelectorAll('#navbar a'));
                 if (!navbarLinks.length) return;
 
@@ -136,14 +144,17 @@ const observeSections = (sections: HTMLElement[]): void => {
                     activeLink.classList.remove(...removeClasses);
                     activeLink.classList.add(...addClasses);
                 }
-            }),
+            }
+        },
         {
             root: null,
             threshold: 0.5
         }
     );
 
-    sections.forEach((section) => observer.observe(section));
+    for (const section of sections) {
+        observer.observe(section);
+    }
 };
 
 /**
@@ -159,7 +170,9 @@ const handleNavLinkClick = (navLinks: HTMLLinkElement[], navToggle: HTMLButtonEl
     const target = <HTMLAnchorElement>event.target;
     const href = target.getAttribute('href') || '';
 
-    navLinks.forEach((link) => link.classList.remove('border-white'));
+    for (const link of navLinks) {
+        link.classList.remove('border-white');
+    }
 
     if (href.startsWith('#')) {
         target.classList.add('border-white');
@@ -222,7 +235,10 @@ const initializeNavbar = (): void => {
         handleScreenSize(navRight);
 
         const navLinks = <HTMLLinkElement[]>Array.from(document.querySelectorAll('#navbar a'));
-        navLinks.forEach((link) => link.addEventListener('click', (event) => handleNavLinkClick(navLinks, navToggle, event)));
+
+        for (const link of navLinks) {
+            link.addEventListener('click', (event) => handleNavLinkClick(navLinks, navToggle, event));
+        }
 
         navToggle.addEventListener('click', () => {
             navToggle.classList.toggle('close');
@@ -240,6 +256,7 @@ const initializeNavbar = (): void => {
         navAlt.classList.remove('hidden');
         navAlt.classList.add('flex');
 
+        logoButton.href = '#';
         logoButton.addEventListener('click', (event) => {
             event.preventDefault();
 

@@ -8,24 +8,38 @@ import { initializeForm } from '@functions/form';
 import type { MainConfig } from '@root/types';
 
 /**
+ * Renders the page based on the provided configuration.
+ *
+ * @param {MainConfig} config - The main config for all components.
+ * @returns {void} This function has no output.
+ */
+const renderPage = (config: MainConfig): void => {
+    const { stars, ...restConfig } = config;
+
+    if (window.location.pathname === '/') {
+        window.animatedStarField(config.stars);
+        protectEmail();
+    }
+
+    delayRender(<MainConfig>restConfig);
+};
+
+/**
  * Delays the initialization of the components until the user interacts with the page.
  *
  * @param {MainConfig} config - The main config for all components.
  * @returns {void} This function has no output.
  */
-const delayRender = ({ consent, stars, stack, services, repos, clients, form }: MainConfig): void => {
+const delayRender = ({ consent, stack, services, repos, clients, form }: MainConfig): void => {
     const interactionEvents = ['mousemove', 'click', 'keydown', 'touchstart', 'scroll'];
     let interactionHappened = false;
 
-    // skip delay
-    if (window.location.pathname === '/') {
-        window.animatedStarField(stars);
-        protectEmail();
-    }
-
     const handleInteraction = () => {
         if (!interactionHappened) {
-            interactionEvents.forEach((event) => document.removeEventListener(event, handleInteraction));
+            for (const event of interactionEvents) {
+                document.removeEventListener(event, handleInteraction);
+            }
+
             interactionHappened = true;
 
             initializeConsent(consent);
@@ -40,7 +54,9 @@ const delayRender = ({ consent, stars, stack, services, repos, clients, form }: 
         }
     };
 
-    interactionEvents.forEach((event) => document.addEventListener(event, handleInteraction));
+    for (const event of interactionEvents) {
+        document.addEventListener(event, handleInteraction);
+    }
 };
 
 /**
@@ -72,4 +88,4 @@ const protectEmail = (): void => {
     linkElement.addEventListener('click', unlockLink);
 };
 
-export { delayRender, protectEmail };
+export { renderPage, delayRender, protectEmail };

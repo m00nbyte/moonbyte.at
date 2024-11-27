@@ -1,6 +1,6 @@
 ![m00nbyte][socialify-img]
 
-![stars][stars-img] ![forks][forks-img] ![downloads][downloads-img] ![license][license-img]
+![stars][stars-img] ![forks][forks-img] ![license][license-img]
 
 ---
 
@@ -80,7 +80,7 @@ Don't forget to leave a star.
 
 <!-- github badges -->
 
-[socialify-img]: https://socialify.git.ci/m00nbyte/moonbyte.at/image?font=Raleway&logo=https%3A%2F%2Fmoonbyte.at%2Fimg%2Flogo_white.png&name=1&pattern=Solid&theme=Dark
+[socialify-img]: https://socialify.git.ci/m00nbyte/moonbyte.at/image?description=1&font=Source%20Code%20Pro&logo=https%3A%2F%2Fmoonbyte.at%2Fimg%2Flogo%2Flogo_white.png&name=1&pattern=Solid&theme=Dark
 [stars-img]: https://img.shields.io/github/stars/m00nbyte/moonbyte.at?style=for-the-badge
 [forks-img]: https://img.shields.io/github/forks/m00nbyte/moonbyte.at?style=for-the-badge
 [downloads-img]: https://img.shields.io/github/downloads/m00nbyte/moonbyte.at/total?style=for-the-badge

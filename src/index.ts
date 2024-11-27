@@ -1,7 +1,9 @@
 import config from '@root/config.json';
 
 import { initializeNavbar } from '@functions/navbar';
-import { delayRender } from '@functions/helpers';
+import { renderPage } from '@functions/helpers';
+
+import { MainConfig } from '@types';
 
 /**
  * This function sets up the navigation bar and initializes various components.
@@ -10,7 +12,8 @@ import { delayRender } from '@functions/helpers';
  */
 const initPage = (): void => {
     initializeNavbar();
-    delayRender(config);
+
+    renderPage(<MainConfig>config);
 
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js');

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.6 - 2024-11-28
+
+-   change: performance optimizations
+
 ## 1.0.5 - 2024-11-13
 
 -   change: update code
