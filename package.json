@@ -1,6 +1,6 @@
 {
     "name": "@m00nbyte/moonbyte.at",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "Blazing fast static website built with TypeScript, TailwindCSS, and Rollup.",
     "author": "m00nbyte <office@moonbyte.at>",
     "keywords": [
