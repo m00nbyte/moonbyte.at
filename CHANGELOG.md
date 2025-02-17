@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.8 - 2025-02-17
+
+-   update: small optimizations
+
 ## 1.0.7 - 2024-12-12
 
 -   fix: google fonts
