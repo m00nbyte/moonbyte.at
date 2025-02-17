@@ -1,6 +1,21 @@
 import type { ClientList } from '@root/types';
 
 /**
+ * Calculates the animation duration for the slider, depending on the total number of logos.
+ *
+ * @param {number} total - The total number of logo objects.
+ * @returns {void} This function has no output.
+ */
+const setAnimationDuration = (total: number): void => {
+    const container = document.querySelector<HTMLDivElement>('#logo_slider');
+    if (!container) return;
+
+    const durationPerItem = 2.5;
+    const totalDuration = total * durationPerItem;
+    container.style.setProperty('--animation-duration', `${totalDuration}s`);
+};
+
+/**
  * Initializes a scrolling logo slider with the provided list of clients.
  *
  * @param {ClientList} clients - An array of client objects.
@@ -12,6 +27,8 @@ const generateClients = (clients: ClientList): void => {
 
     const wrapper = document.createElement('div');
     wrapper.className = 'inline-block ml-16 slide-left-infinite group-hover:animation-pause w-max grayscale';
+
+    setAnimationDuration(clients.length);
 
     for (const { url, title, src, classes } of clients) {
         wrapper.innerHTML += `<a href="${url}" target="_blank" title="${title}">

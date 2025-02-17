@@ -160,11 +160,17 @@ const observeSections = (sections: HTMLElement[]): void => {
 /**
  * Handles click events on navigation links, scrolling smoothly to the target section.
  *
+ * @param {HTMLDivElement} navContainer - The navigation container element.
  * @param {HTMLLinkElement[]} navLinks - The navigation links to update.
  * @param {Event} event - The click event that triggered this handler.
  * @returns {void} This function has no output.
  */
-const handleNavLinkClick = (navLinks: HTMLLinkElement[], navToggle: HTMLButtonElement, event: Event): void => {
+const handleNavLinkClick = (
+    navContainer: HTMLDivElement,
+    navLinks: HTMLLinkElement[],
+    navToggle: HTMLButtonElement,
+    event: Event
+): void => {
     event.preventDefault();
 
     const target = <HTMLAnchorElement>event.target;
@@ -184,8 +190,10 @@ const handleNavLinkClick = (navLinks: HTMLLinkElement[], navToggle: HTMLButtonEl
         }
 
         if (targetElement) {
+            const navOffset = Math.floor(navContainer.offsetHeight / 2);
+
             window.scrollTo({
-                top: targetElement.offsetTop,
+                top: targetElement.offsetTop - navOffset,
                 behavior: 'smooth'
             });
         }
@@ -237,7 +245,7 @@ const initializeNavbar = (): void => {
         const navLinks = <HTMLLinkElement[]>Array.from(document.querySelectorAll('#navbar a'));
 
         for (const link of navLinks) {
-            link.addEventListener('click', (event) => handleNavLinkClick(navLinks, navToggle, event));
+            link.addEventListener('click', (event) => handleNavLinkClick(navContainer, navLinks, navToggle, event));
         }
 
         navToggle.addEventListener('click', () => {
