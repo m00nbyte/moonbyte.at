@@ -147,11 +147,7 @@
         {
             "title": "Breeder",
             "url": "https://breeder.at/",
-            "img": {
-                "src": "/img/clients/breeder.webp",
-                "width": "59.73",
-                "height": "56"
-            },
+            "src": "/img/clients/breeder.webp",
             "classes": "h-14"
         },
         {
@@ -231,6 +227,68 @@
             "url": "https://blueskyvaccines.com/",
             "src": "/img/clients/bluesky_immunotherapies.webp",
             "classes": "h-8 invert"
+        }
+    ],
+    "testimonials": [
+        {
+            "rating": 4,
+            "name": "Mark H.",
+            "text": "Working with Sven was a breeze! He understood our vision perfectly and delivered a website that exceeded our expectations. Fast, responsive, and creative!"
+        },
+        {
+            "rating": 4,
+            "name": "Sarah L.",
+            "text": "Sven turned our ideas into a stunning, functional website. The attention to detail and responsiveness to feedback were top-notch."
+        },
+        {
+            "rating": 5,
+            "name": "Tom W.",
+            "text": "From start to finish, Sven was professional, communicative, and delivered on time. The custom features he implemented took our online presence to the next level."
+        },
+        {
+            "rating": 4,
+            "name": "Jessica M.",
+            "text": "Sven's work on our project was nothing short of outstanding. He was quick to address changes and always offered valuable insights. The final product blew us away!"
+        },
+        {
+            "rating": 4,
+            "name": "David S.",
+            "text": "I was amazed by how smooth the entire process was. Sven made sure every detail was perfect, and the end result was a sleek, user-friendly website."
+        },
+        {
+            "rating": 4,
+            "name": "Emma R.",
+            "text": "Professional, creative, and dedicated. Sven transformed our outdated website into a modern platform that truly represents our brand."
+        },
+        {
+            "rating": 5,
+            "name": "Carlos R.",
+            "text": "Sven is a CODE MACHINE!! I don't think there's anything he doesn't know. A great trainer, you can learn a LOT and he gives great feedback."
+        },
+        {
+            "rating": 5,
+            "name": "Priya M.",
+            "text": "Absolutely brilliant! Sven breaks down complex concepts into easy-to-understand bits. I left every session feeling more confident with JavaScript."
+        },
+        {
+            "rating": 4,
+            "name": "Emily L.",
+            "text": "Sven's knowledge is mind-blowing, and he's incredibly patient with questions. I finally understand closures thanks to his clear explanations."
+        },
+        {
+            "rating": 5,
+            "name": "Maya S.",
+            "text": "You won't find a more dedicated instructor. Sven genuinely cares about your progress and gives constructive feedback that pushes you to improve."
+        },
+        {
+            "rating": 4,
+            "name": "Daniel K.",
+            "text": "If you think JavaScript is confusing, take Sven's course. He turns what seems complicated into something you actually get."
+        },
+        {
+            "rating": 5,
+            "name": "Charlie B.",
+            "text": "Highly engaging and super informative. Sven keeps you on your toes with real-world challenges and solutions that stick."
         }
     ],
     "form": {

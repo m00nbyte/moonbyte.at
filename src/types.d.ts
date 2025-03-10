@@ -14,6 +14,7 @@ interface MainConfig {
     services: ServiceList;
     repos: RepoList;
     clients: ClientList;
+    testimonials: TestimonialList;
     form: FormText;
 }
 // #endregion
@@ -138,6 +139,16 @@ export interface ClientObject {
 }
 
 export type ClientList = ClientObject[];
+// #endregion
+
+// #region testimonials
+export interface TestimonialObject {
+    rating: number;
+    name: string;
+    text: string;
+}
+
+export type TestimonialList = TestimonialObject[];
 // #endregion
 
 // #region form

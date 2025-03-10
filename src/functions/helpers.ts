@@ -3,6 +3,7 @@ import { initializeStack } from '@functions/stack';
 import { initializeServices } from '@functions/services';
 import { initializeRepos } from '@functions/repos';
 import { initializeClients } from '@functions/clients';
+import { initializeTestimonials } from '@functions/testimonials';
 import { initializeForm } from '@functions/form';
 
 import type { MainConfig } from '@root/types';
@@ -30,7 +31,7 @@ const renderPage = (config: MainConfig): void => {
  * @param {MainConfig} config - The main config for all components.
  * @returns {void} This function has no output.
  */
-const delayRender = ({ consent, stack, services, repos, clients, form }: MainConfig): void => {
+const delayRender = ({ consent, stack, services, repos, clients, testimonials, form }: MainConfig): void => {
     const interactionEvents = ['mousemove', 'click', 'keydown', 'touchstart', 'scroll'];
     let interactionHappened = false;
 
@@ -49,6 +50,7 @@ const delayRender = ({ consent, stack, services, repos, clients, form }: MainCon
                 initializeServices(services);
                 initializeRepos(repos);
                 initializeClients(clients);
+                initializeTestimonials(testimonials);
                 initializeForm(form);
             }
         }
