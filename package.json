@@ -14,8 +14,7 @@
     "scripts": {
         "dev": "cross-env NODE_ENV=development rollup -c -w",
         "build": "cross-env NODE_ENV=production rollup -c",
-        "predeploy": "yarn build",
-        "deploy": "gh-pages -d dist",
+        "deploy": "npx wrangler deploy",
         "watch": "npx serve dist",
         "lighthouse:mobile": "npx lighthouse http://localhost:3000/ --quiet --chrome-flags=\"--headless\" --output-path=./stats/lighthouse.mobile.html",
         "lighthouse:desktop": "npx lighthouse http://localhost:3000/ --quiet --preset=desktop --chrome-flags=\"--headless\" --output-path=./stats/lighthouse.desktop.html",
@@ -71,7 +70,6 @@
         "autoprefixer": "^10.4.20",
         "cross-env": "^7.0.3",
         "cssnano": "^7.0.5",
-        "gh-pages": "^6.1.1",
         "eslint": "^9.33.0",
         "html-minifier-terser": "^7.2.0",
         "mocha": "^10.4.0",
