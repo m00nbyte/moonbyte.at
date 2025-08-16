@@ -32,7 +32,6 @@
     "bugs": {
         "url": "https://github.com/m00nbyte/moonbyte.at/issues"
     },
-    "dependencies": {},
     "devDependencies": {
         "@babel/core": "^7.24.6",
         "@babel/eslint-parser": "^7.24.6",
@@ -72,7 +71,7 @@
         "autoprefixer": "^10.4.20",
         "cross-env": "^7.0.3",
         "cssnano": "^7.0.5",
-        "gh-pages": "^6.1.1",
+        "eslint": "^9.33.0",
         "html-minifier-terser": "^7.2.0",
         "mocha": "^10.4.0",
         "postcss": "^8.4.41",
@@ -88,6 +87,7 @@
         "rollup-plugin-visualizer": "^5.12.0",
         "rollup-plugin-watch": "^1.0.4",
         "rollup-plugin-workbox": "^8.1.0",
+        "sass": "^1.90.0",
         "tailwindcss": "^3.4.10",
         "typescript": "^5.4.5"
     }
