@@ -117,13 +117,23 @@
     ],
     "repos": [
         {
-            "name": "animated-starfield",
-            "type": "gh"
-        },
-        {
             "name": "pretty-url",
             "type": "web",
-            "url": "https://prettyurl.dev/"
+            "url": "https://prettyurl.pages.dev/"
+        },
+        {
+            "name": "extract-html",
+            "type": "web",
+            "url": "https://extracthtml.pages.dev/"
+        },
+        {
+            "name": "code-editor",
+            "type": "web",
+            "url": "https://codeeditor.pages.dev/"
+        },
+        {
+            "name": "animated-starfield",
+            "type": "gh"
         },
         {
             "name": "classmix",
