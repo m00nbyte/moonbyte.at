@@ -27,6 +27,7 @@ import cssnano from 'cssnano';
 // local
 import { createRequire } from 'module';
 const pkg = createRequire(import.meta.url)('./package.json');
+const { gtm_id } = createRequire(import.meta.url)('./src/config.json');
 
 // prod build
 const production = process.env.NODE_ENV === 'production';
@@ -64,7 +65,8 @@ const processHtmlFile = ({ entry, output }) =>
                 layout
                     .replace('<!-- NAVBAR -->', navbar)
                     .replace('<!-- SECTIONS -->', content)
-                    .replace('<!-- FOOTER -->', footer),
+                    .replace('<!-- FOOTER -->', footer)
+                    .replace('<!-- GTM_ID -->', gtm_id),
                 {
                     collapseWhitespace: true,
                     removeComments: true,
@@ -109,18 +111,46 @@ const htmlPlugins = [
     }),
     generateSW({
         swDest: 'dist/sw.js',
+        cacheId: 'html',
         globDirectory: 'dist/',
-        globPatterns: ['**/*.{html,js,css}'],
+        globPatterns: ['**/*.html'],
         skipWaiting: true,
         clientsClaim: true,
+        dontCacheBustURLsMatching: /\.[0-9a-f]{8}\./,
+        navigateFallback: 'offline.html',
+        navigateFallbackAllowlist: [new RegExp('/'), new RegExp('/disclaimer'), new RegExp('/privacy')],
         runtimeCaching: [
             {
-                urlPattern: /\.(?:webp|png|svg)$/,
+                urlPattern: /\.(?:js|css)$/,
+                handler: 'StaleWhileRevalidate',
+                options: {
+                    cacheName: 'dynamic',
+                    expiration: {
+                        maxEntries: 100,
+                        maxAgeSeconds: 7 * 24 * 60 * 60
+                    }
+                }
+            },
+            {
+                urlPattern: /\.(?:webp|webm|jpg|png|svg)$/,
                 handler: 'CacheFirst',
                 options: {
-                    cacheName: 'images',
+                    cacheName: 'media',
                     expiration: {
-                        maxEntries: 100
+                        maxEntries: 100,
+                        maxAgeSeconds: 30 * 24 * 60 * 60
+                    }
+                }
+            },
+            {
+                urlPattern: ({ request }) => request.mode === 'navigate',
+                handler: 'NetworkFirst',
+                options: {
+                    cacheName: 'pages',
+                    networkTimeoutSeconds: 3,
+                    expiration: {
+                        maxEntries: 10,
+                        maxAgeSeconds: 24 * 60 * 60
                     }
                 }
             }
