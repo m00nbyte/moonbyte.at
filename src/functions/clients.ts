@@ -10,7 +10,7 @@ const setAnimationDuration = (total: number): void => {
     const container = document.querySelector<HTMLDivElement>('#logo_slider');
     if (!container) return;
 
-    const durationPerItem = 2.5;
+    const durationPerItem = 1.5;
     const totalDuration = total * durationPerItem;
     container.style.setProperty('--animation-duration', `${totalDuration}s`);
 };
@@ -26,14 +26,18 @@ const generateClients = (clients: ClientList): void => {
     if (!container) return;
 
     const wrapper = document.createElement('div');
-    wrapper.className = 'inline-block ml-16 slide-left-infinite group-hover:animation-pause w-max grayscale';
+    wrapper.className = 'inline-flex items-center ml-16 slide-left-infinite group-hover:animation-pause w-max';
 
     setAnimationDuration(clients.length);
 
     for (const { url, title, src, classes } of clients) {
-        wrapper.innerHTML += `<a href="${url}" target="_blank" title="${title}">
-        <img src="${src}" class="inline mx-8 transition-all opacity-80 hover:opacity-100 ${classes}" alt="${title}" />
-    </a>`;
+        wrapper.innerHTML += `
+        <a href="${url}" target="_blank" title="${title}" class="mx-8 transition-all hover:scale-110">
+            <img src="${src}"
+                 class="h-12 w-auto max-w-none opacity-80 grayscale transition-all hover:opacity-100 hover:grayscale-0 ${classes}"
+                 alt="${title}"
+                 loading="lazy" />
+        </a>`;
     }
 
     const wrapperClone = <HTMLDivElement>wrapper.cloneNode(true);

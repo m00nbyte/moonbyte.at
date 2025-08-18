@@ -1,6 +1,9 @@
 // #region general
 declare global {
     interface Window {
+        PowerGlitch: {
+            glitch: (classname, options?) => void;
+        };
         animatedStarField: (StarsConfig) => void;
         dataLayer: Array<Record<unknown, unknown>>;
         gtag: (...arguments) => void;
@@ -12,7 +15,10 @@ interface MainConfig {
     stars: StarsConfig;
     stack: TechStackList;
     services: ServiceList;
-    repos: RepoList;
+    github: {
+        user: string;
+        repos: string[];
+    };
     clients: ClientList;
     testimonials: TestimonialList;
     form: FormText;
@@ -111,23 +117,15 @@ export type ServiceList = ServiceObject[];
 // #endregion
 
 // #region repos
-export interface RepoObject {
+export interface GitHubRepo {
     name: string;
-    type: string;
-    url?: string;
+    html_url: string;
+    language: string | null;
+    stargazers_count: number;
+    fork: boolean;
 }
 
-export type RepoList = RepoObject[];
-
-export interface RepoLink {
-    title: string;
-    icon: string;
-    link?: string;
-}
-
-export interface RepoLinkConfig {
-    [key: string]: RepoLink;
-}
+export type GitHubRepoList = GitHubRepo[];
 // #endregion
 
 // #region clients

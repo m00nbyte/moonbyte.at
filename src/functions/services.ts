@@ -11,12 +11,19 @@ const initializeServices = (list: ServiceList): void => {
     if (!servicesContainer) return;
 
     for (const { icon, title, description } of list) {
-        servicesContainer.innerHTML += `<div class="flex flex-col h-full gap-2 bg-opacity-60">
-            <div class="flex flex-row items-center gap-4 text-2xl">
-                <span class="${icon} h-7 w-7"></span>
-                <span class="font-bold tracking-tight">${title}</span>
+        servicesContainer.innerHTML += `
+        <div class="group relative h-full overflow-hidden border border-stone-700 bg-stone-700 p-4 transition-all">
+            <div class="flex flex-col h-full gap-4">
+                <div class="flex flex-row items-center gap-4">
+                    <span class="${icon} h-7 w-7"></span>
+                    <span class="text-2xl font-bold tracking-tight">
+                        ${title}
+                    </span>
+                </div>
+                <p class="flex-grow text-base leading-relaxed text-justify text-stone-100">
+                    ${description}
+                </p>
             </div>
-            <p class="flex-grow text-base leading-relaxed text-justify">${description}</p>
         </div>`;
     }
 };

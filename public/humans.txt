@@ -6,7 +6,7 @@ Encryption: https://keybase.pub/m00nbyte/public-key.asc
 Github: m00nbyte
 
 /* SITE */
-Last Update: 2024/10/26
+Last Update: 2025/08/18
 Language: English
 Standards: HTML5, CSS3, ES6
 Components: TypeScript, Tailwind, Rollup, ...

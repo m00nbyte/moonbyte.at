@@ -115,44 +115,19 @@
             "description": "Do you already have a website, but you sometimes have a question or two? I will be happy to help you with your request."
         }
     ],
-    "repos": [
-        {
-            "name": "pretty-url",
-            "type": "web",
-            "url": "https://prettyurl.pages.dev/"
-        },
-        {
-            "name": "extract-html",
-            "type": "web",
-            "url": "https://extracthtml.pages.dev/"
-        },
-        {
-            "name": "code-editor",
-            "type": "web",
-            "url": "https://moonedit.pages.dev/"
-        },
-        {
-            "name": "animated-starfield",
-            "type": "gh"
-        },
-        {
-            "name": "classmix",
-            "type": "npm"
-        },
-        {
-            "name": "data-extractor",
-            "type": "npm"
-        },
-        {
-            "name": "currency-converter",
-            "type": "npm"
-        },
-        {
-            "name": "clear_all_browsing_data",
-            "type": "cws",
-            "url": "https://chromewebstore.google.com/detail/clear-all-browsing-data/nbdjkggggdkmlnajfhidfgfgodlmedia"
-        }
-    ],
+    "github": {
+        "user": "m00nbyte",
+        "repos": [
+            "pretty-url",
+            "extract-html",
+            "code-editor",
+            "animated-starfield",
+            "classmix",
+            "data-extractor",
+            "currency-converter",
+            "clear_all_browsing_data"
+        ]
+    },
     "clients": [
         {
             "title": "Breeder",
