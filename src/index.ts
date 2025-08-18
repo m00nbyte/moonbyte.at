@@ -16,7 +16,7 @@ const initPage = (): void => {
     renderPage(<MainConfig>config);
 
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js').then((registration) => registration.update());
+        navigator.serviceWorker.register('/sw.js');
     }
 
     console.log(
