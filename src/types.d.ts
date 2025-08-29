@@ -15,6 +15,7 @@ interface MainConfig {
     stars: StarsConfig;
     stack: TechStackList;
     services: ServiceList;
+    projects: ProjectList;
     github: {
         user: string;
         repos: string[];
@@ -114,6 +115,18 @@ export interface ServiceObject {
 }
 
 export type ServiceList = ServiceObject[];
+// #endregion
+
+// #region projects
+export interface Project {
+    href: string;
+    imageSrc: string;
+    alt: string;
+    title: string;
+    subtitle: string;
+}
+
+export type ProjectList = Project[];
 // #endregion
 
 // #region repos

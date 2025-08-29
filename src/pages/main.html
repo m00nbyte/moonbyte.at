@@ -50,7 +50,7 @@
 >
     <div class="flex flex-col w-full gap-20 md:w-5/6 xl:w-4/6 2xl:max-w-4xl">
         <div class="flex flex-col gap-8 text-xl lg:text-2xl">
-            <div class="flex flex-col items-center gap-8">
+            <!--<div class="flex flex-col items-center gap-8">
                 <video
                     id="profile-video"
                     class="h-48 grayscale blur-[0.8px] contrast-125 sepia rounded-md glitch"
@@ -64,7 +64,11 @@
                     <span class="animate-wave">👋</span>
                     <span>Hey there, I'm Sven.</span>
                 </h2>
-            </div>
+            </div>-->
+            <h2 class="flex gap-3 text-3xl font-bold tracking-tight lg:text-4xl">
+                <span class="animate-wave">👋</span>
+                <span>Hey there, I'm Sven.</span>
+            </h2>
 
             <p class="text-justify">
                 I am a senior web developer, network administrator and IT security manager from austria with 15 years of
@@ -111,18 +115,21 @@
 >
     <div class="flex flex-col w-full gap-16 md:w-5/6 xl:w-4/6 2xl:max-w-4xl">
         <div class="flex flex-col gap-8 text-xl lg:text-2xl">
-            <h2 class="flex items-center gap-8 text-3xl font-bold tracking-tight lg:text-4xl">Showcase</h2>
+            <div class="flex flex-col gap-8 text-xl lg:text-2xl">
+                <h2 class="flex items-center gap-8 text-3xl font-bold tracking-tight lg:text-4xl">Showcase</h2>
+                <p class="text-justify">
+                    Here's a selection of projects I've built to solve "problems", but also explore my
+                    <a
+                        href="https://github.com/m00nbyte?tab=repositories"
+                        class="underline transition-all hover:text-stone-300"
+                        target="_blank"
+                        >GitHub repositories</a
+                    >
+                    to see what else I've been working on and leave some stars.
+                </p>
+            </div>
 
-            <p class="text-justify">
-                Explore my
-                <a
-                    href="https://github.com/m00nbyte?tab=repositories"
-                    class="underline transition-all hover:text-stone-300"
-                    target="_blank"
-                    >GitHub repositories</a
-                >
-                to see all projects I've been working on.
-            </p>
+            <div id="projects_grid" class="grid w-full max-w-6xl grid-cols-1 gap-6 mx-auto lg:grid-cols-2"></div>
         </div>
 
         <div class="flex flex-col gap-6 pt-4">

@@ -116,17 +116,45 @@
             "description": "Do you already have a website, but you sometimes have a question or two? I will be happy to help you with your request."
         }
     ],
+    "projects": [
+        {
+            "href": "https://prettyurl.pages.dev/",
+            "imageSrc": "/img/projects/prettyurl.webp",
+            "alt": "Pretty URL",
+            "title": "Pretty URL",
+            "subtitle": "Parse and analyze any URLs"
+        },
+        {
+            "href": "https://extracthtml.pages.dev/",
+            "imageSrc": "/img/projects/extracthtml.webp",
+            "alt": "Extract HTML",
+            "title": "Extract HTML",
+            "subtitle": "Inspect and extract HTML using CSS"
+        },
+        {
+            "href": "https://validjson.pages.dev/",
+            "imageSrc": "/img/projects/validjson.webp",
+            "alt": "Format And Validate JSON",
+            "title": "Validate JSON",
+            "subtitle": "Format And Validate JSON"
+        },
+        {
+            "href": "https://moonedit.pages.dev/",
+            "imageSrc": "/img/projects/moonedit.webp",
+            "alt": "Live Code Editor",
+            "title": "Live Code Editor",
+            "subtitle": "Edit HTML, CSS, JavaScript live"
+        }
+    ],
     "github": {
         "user": "m00nbyte",
         "repos": [
-            "pretty-url",
-            "extract-html",
-            "code-editor",
             "animated-starfield",
             "classmix",
             "data-extractor",
             "currency-converter",
-            "clear_all_browsing_data"
+            "clear_all_browsing_data",
+            "rollup-plugin-strip-prop-types"
         ]
     },
     "clients": [

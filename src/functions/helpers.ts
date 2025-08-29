@@ -1,6 +1,7 @@
 import { initializeConsent } from '@functions/consent';
 import { initializeStack } from '@functions/stack';
 import { initializeServices } from '@functions/services';
+import { initializeProjects } from '@root/functions/projects';
 import { initializeRepos } from '@root/functions/repos';
 import { initializeClients } from '@functions/clients';
 import { initializeTestimonials } from '@functions/testimonials';
@@ -31,10 +32,10 @@ const replayVideo = (): void => {
 const addGlitchEffects = (): void => {
     if (window.PowerGlitch) {
         const glitchElements = [
-            {
-                selector: '#nav_links a',
-                options: { playMode: 'hover' }
-            },
+            // {
+            //     selector: '#nav_links a',
+            //     options: { playMode: 'hover' }
+            // },
             {
                 selector: '#landing-title',
                 options: {
@@ -54,15 +55,15 @@ const addGlitchEffects = (): void => {
                         amplitudeY: 0.02
                     }
                 }
-            },
-            {
-                selector: '#footer-heart',
-                options: {
-                    timing: {
-                        duration: 4000
-                    }
-                }
             }
+            // {
+            //     selector: '#footer-heart',
+            //     options: {
+            //         timing: {
+            //             duration: 4000
+            //         }
+            //     }
+            // }
         ];
 
         glitchElements.forEach(({ selector, options }) => window.PowerGlitch.glitch(selector, options));
@@ -104,7 +105,16 @@ const protectEmail = (): void => {
  * @param {MainConfig} config - The main config for all components.
  * @returns {void} This function has no output.
  */
-const delayRender = ({ consent, stack, services, github: { user, repos }, clients, testimonials, form }: MainConfig): void => {
+const delayRender = ({
+    consent,
+    stack,
+    services,
+    projects,
+    github: { user, repos },
+    clients,
+    testimonials,
+    form
+}: MainConfig): void => {
     const interactionEvents = ['mousemove', 'click', 'keydown', 'touchstart', 'scroll'];
     let interactionHappened = false;
 
@@ -121,6 +131,7 @@ const delayRender = ({ consent, stack, services, github: { user, repos }, client
             if (window.location.pathname === '/') {
                 initializeStack(stack);
                 initializeServices(services);
+                initializeProjects(projects);
                 initializeRepos(user, repos);
                 initializeClients(clients);
                 initializeTestimonials(testimonials);

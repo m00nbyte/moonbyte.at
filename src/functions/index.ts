@@ -1,6 +1,7 @@
 export { initializeConsent } from '@functions/consent';
 export { initializeStack } from '@functions/stack';
 export { initializeServices } from '@functions/services';
+export { initializeProjects } from '@functions/projects';
 export { initializeRepos } from '@functions/repos';
 export { initializeClients } from '@functions/clients';
 export { initializeTestimonials } from '@functions/testimonials';
